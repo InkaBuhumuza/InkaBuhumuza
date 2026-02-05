@@ -37,16 +37,21 @@
         html {
             scroll-behavior: smooth;
         }
+
+        .pregnant-badge {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .7;
+            }
+        }
     </style>
 </head>
-
-
-
-
-
-
-
-
 
 <body>
     <div id="root"></div>
@@ -102,34 +107,42 @@
             </svg>
         );
 
+        const HeartIcon = ({ size = 20, className = "" }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+        );
 
+        const BabyIcon = ({ size = 20, className = "" }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M9 12h.01"></path>
+                <path d="M15 12h.01"></path>
+                <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"></path>
+                <path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"></path>
+            </svg>
+        );
 
-        // Sample data - Cows
+        // Sample data - Cows with pregnancy info
         const initialCows = [
           {
             id: 1,
             name: "Bikari",
             breed: "Salers",
-            dateOfBirth: "-",
+            dateOfBirth: "2020-03-15",
             owner: "Pilote Muhoza",
             milkCapacity: "10 L/day",
             color: "Black & brown",
             tagNumber: "HF-001",
             profilePicture: "./images/bikari.jpg",
+            pregnancyDate: null, // Not pregnant
+            birthDate: "2024-08-15", // Last gave birth
             vaccinations: [
               { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-
-
-
-          
-          //////////////// cow 2///////////////////
-
-
           {
             id: 2,
             name: "Mwamakare",
@@ -140,15 +153,14 @@
             color: "Dark Brown",
             tagNumber: "JR-012",
             profilePicture: "./images/mwamakare.jpg",
+            pregnancyDate: "2024-09-20", // Pregnant - should deliver around June 2025
+            birthDate: null,
             vaccinations: [
-              { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Yaheruka kwima ntiyatewe", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Yaheruka kwima ntiyatewe", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-
-
-          //////////////// cow 3///////////////////
           {
             id: 3,
             name: "Yamaza Mubumbe",
@@ -159,84 +171,84 @@
             color: "Dark Brown",
             tagNumber: "GU-003",
             profilePicture: "./images/yamaza_mubumbe.jpg",
+            pregnancyDate: "2024-11-10", // Recently pregnant
+            birthDate: null,
             vaccinations: [
-              { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-
-
-          //////////////// cow 4///////////////////
           {
             id: 4,
             name: "Ishuri",
             breed: "Frisonne",
-            dateOfBirth: "2024-07-14",
+            dateOfBirth: "2023-07-14",
             owner: "Pilote Muhoza",
             milkCapacity: "-",
             color: "Brown & White",
             tagNumber: "BS-008",
             profilePicture: "./images/ishuri.jpg",
+            pregnancyDate: null,
+            birthDate: null, // Too young, hasn't given birth yet
             vaccinations: [
-              { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-
-
-          //////////////// cow 5///////////////////
           {
             id: 5,
             name: "Yamaza Maman",
             breed: "Salers",
-            dateOfBirth: "2024-05-30",
+            dateOfBirth: "2023-05-30",
             owner: "Pilote Muhoza",
             milkCapacity: "-",
             color: "Brown & White",
             tagNumber: "HF-015",
             profilePicture: "./images/yamaza_maman.jpg",
+            pregnancyDate: null,
+            birthDate: null,
             vaccinations: [
               { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-        
-          //////////////// cow 6///////////////////
           {
-            id: 5,
+            id: 6,
             name: "Mukunzi",
             breed: "Salers",
-            dateOfBirth: "2023-05-30",
+            dateOfBirth: "2022-05-30",
             owner: "Pilote Muhoza",
             milkCapacity: "10 L/day",
             color: "Brown & White",
-            tagNumber: "HF-015",
+            tagNumber: "HF-016",
             profilePicture: "./images/mukunzi.jpg",
+            pregnancyDate: null,
+            birthDate: "2025-01-10", // Recently gave birth
             vaccinations: [
-              { date: "2025-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
             ]
           },
-      
-          //////////////// cow 7///////////////////
           {
-            id: 5,
+            id: 7,
             name: "Rwabikari",
             breed: "Salers",
-            dateOfBirth: "2024-12-30",
+            dateOfBirth: "2023-12-30",
             owner: "Pilote Muhoza",
             milkCapacity: "-",
             color: "Brown & White",
-            tagNumber: "HF-015",
+            tagNumber: "HF-017",
             profilePicture: "-",
+            pregnancyDate: null,
+            birthDate: null,
             vaccinations: [
-              { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
             ]
           }
         ];
@@ -247,84 +259,111 @@
             id: 1,
             name: "Intama",
             breed: "NAN",
-            dateOfBirth: "-",
+            dateOfBirth: "2020-06-15",
             owner: "Pilote Muhoza",
             woolQuality: "Fine",
             color: "White",
             tagNumber: "MR-001",
             profilePicture: "./images/intama.webp",
             vaccinations: [
-              { date: "2025-03-215", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" }
+              { date: "2024-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" }
             ]
-           }
-          // {
-          //   id: 2,
-          //   name: "Cotton",
-          //   breed: "Suffolk",
-          //   dateOfBirth: "2020-09-20",
-          //   owner: "Mike Davis",
-          //   woolQuality: "Medium",
-          //   color: "Black Face",
-          //   tagNumber: "SF-005",
-          //   profilePicture: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
-          //   vaccinations: [
-          //     { date: "2024-02-05", vaccine: "Pneumonia", administered: "Dr. Chen" },
-          //     { date: "2023-08-20", vaccine: "Clostridial Disease", administered: "Dr. Anderson" },
-          //     { date: "2023-02-15", vaccine: "Scabby Mouth", administered: "Dr. Chen" }
-          //   ]
-          // },
-          // {
-          //   id: 3,
-          //   name: "Snowball",
-          //   breed: "Dorset",
-          //   dateOfBirth: "2022-03-08",
-          //   owner: "Emma Wilson",
-          //   woolQuality: "Fine",
-          //   color: "White",
-          //   tagNumber: "DS-003",
-          //   profilePicture: "https://images.unsplash.com/photo-1579057300283-e30db6872880?w=400&h=400&fit=crop",
-          //   vaccinations: [
-          //     { date: "2024-01-20", vaccine: "Clostridial Disease", administered: "Dr. Anderson" },
-          //     { date: "2023-07-10", vaccine: "Caseous Lymphadenitis", administered: "Dr. Chen" }
-          //   ]
-          // },
-          // {
-          //   id: 4,
-          //   name: "Patches",
-          //   breed: "Jacob",
-          //   dateOfBirth: "2019-11-30",
-          //   owner: "John Smith",
-          //   woolQuality: "Coarse",
-          //   color: "Black & White",
-          //   tagNumber: "JC-008",
-          //   profilePicture: "https://images.unsplash.com/photo-1562793791-86a9de53c0ad?w=400&h=400&fit=crop",
-          //   vaccinations: [
-          //     { date: "2024-02-15", vaccine: "Foot Rot", administered: "Dr. Anderson" },
-          //     { date: "2023-09-01", vaccine: "Clostridial Disease", administered: "Dr. Chen" },
-          //     { date: "2023-03-20", vaccine: "Pneumonia", administered: "Dr. Anderson" }
-          //   ]
-          // }
+          }
         ];
 
         const LivestockManagementApp = () => {
           const [cows] = useState(initialCows);
           const [sheep] = useState(initialSheep);
           const [activeTab, setActiveTab] = useState('cows');
+          const [filterTab, setFilterTab] = useState('all'); // 'all', 'pregnant', 'lactating'
           const [searchQuery, setSearchQuery] = useState('');
           const [selectedAnimal, setSelectedAnimal] = useState(null);
 
           const currentAnimals = activeTab === 'cows' ? cows : sheep;
           const animalType = activeTab === 'cows' ? 'cow' : 'sheep';
 
-          const filteredAnimals = currentAnimals.filter(animal =>
-            animal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            animal.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            animal.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            animal.tagNumber.toLowerCase().includes(searchQuery.toLowerCase())
-          );
+          // Calculate pregnancy status and delivery date
+          const getPregnancyInfo = (animal) => {
+            if (!animal.pregnancyDate) return null;
+            
+            const pregnancyDate = new Date(animal.pregnancyDate);
+            const estimatedDelivery = new Date(pregnancyDate);
+            estimatedDelivery.setMonth(estimatedDelivery.getMonth() + 9);
+            
+            const today = new Date();
+            const daysPregnant = Math.floor((today - pregnancyDate) / (1000 * 60 * 60 * 24));
+            const daysUntilDelivery = Math.floor((estimatedDelivery - today) / (1000 * 60 * 60 * 24));
+            const monthsPregnant = Math.floor(daysPregnant / 30);
+            
+            return {
+              estimatedDelivery,
+              daysPregnant,
+              daysUntilDelivery,
+              monthsPregnant,
+              isPregnant: daysUntilDelivery > 0
+            };
+          };
+
+          // Calculate milk production duration
+          const getMilkProductionInfo = (animal) => {
+            if (!animal.birthDate) return null;
+            
+            const birthDate = new Date(animal.birthDate);
+            const today = new Date();
+            const daysSinceBirth = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+            const monthsSinceBirth = Math.floor(daysSinceBirth / 30);
+            const weeksSinceBirth = Math.floor(daysSinceBirth / 7);
+            
+            return {
+              daysSinceBirth,
+              monthsSinceBirth,
+              weeksSinceBirth,
+              isLactating: true
+            };
+          };
+
+          // Filter animals based on pregnancy/lactation status
+          const getFilteredAnimals = () => {
+            let filtered = currentAnimals;
+
+            if (activeTab === 'cows') {
+              if (filterTab === 'pregnant') {
+                filtered = filtered.filter(cow => {
+                  const pregnancyInfo = getPregnancyInfo(cow);
+                  return pregnancyInfo && pregnancyInfo.isPregnant;
+                });
+              } else if (filterTab === 'lactating') {
+                filtered = filtered.filter(cow => {
+                  const milkInfo = getMilkProductionInfo(cow);
+                  return milkInfo && milkInfo.isLactating;
+                });
+              }
+            }
+
+            return filtered.filter(animal =>
+              animal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              animal.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              animal.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              animal.tagNumber.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+          };
+
+          const filteredAnimals = getFilteredAnimals();
+
+          // Count pregnant and lactating cows
+          const pregnantCount = cows.filter(cow => {
+            const info = getPregnancyInfo(cow);
+            return info && info.isPregnant;
+          }).length;
+
+          const lactatingCount = cows.filter(cow => {
+            const info = getMilkProductionInfo(cow);
+            return info && info.isLactating;
+          }).length;
 
           const calculateAge = (dob) => {
+            if (dob === "-" || !dob) return "-";
             const birthDate = new Date(dob);
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
@@ -336,6 +375,7 @@
           };
 
           const formatDate = (dateString) => {
+            if (dateString === "-" || !dateString) return "-";
             const date = new Date(dateString);
             return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
           };
@@ -369,6 +409,7 @@
                       <button
                         onClick={() => {
                           setActiveTab('cows');
+                          setFilterTab('all');
                           setSearchQuery('');
                         }}
                         className={`flex-1 py-3 px-4 sm:px-6 rounded-xl font-semibold transition-all duration-200 ${
@@ -383,6 +424,7 @@
                       <button
                         onClick={() => {
                           setActiveTab('sheep');
+                          setFilterTab('all');
                           setSearchQuery('');
                         }}
                         className={`flex-1 py-3 px-4 sm:px-6 rounded-xl font-semibold transition-all duration-200 ${
@@ -396,6 +438,45 @@
                       </button>
                     </div>
                   </div>
+
+                  {activeTab === 'cows' && (
+                    <div className="bg-white rounded-2xl shadow-lg p-2 mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          onClick={() => setFilterTab('all')}
+                          className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
+                            filterTab === 'all'
+                              ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md'
+                              : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          Toutes ({cows.length})
+                        </button>
+                        <button
+                          onClick={() => setFilterTab('pregnant')}
+                          className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
+                            filterTab === 'pregnant'
+                              ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md'
+                              : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          <span className="mr-1">🤰</span>
+                          Enceintes ({pregnantCount})
+                        </button>
+                        <button
+                          onClick={() => setFilterTab('lactating')}
+                          className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
+                            filterTab === 'lactating'
+                              ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md'
+                              : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          <span className="mr-1">🍼</span>
+                          En Lactation ({lactatingCount})
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-6">
                     <div className="relative">
@@ -414,91 +495,163 @@
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
                     {filteredAnimals.length > 0 ? (
-                      filteredAnimals.map(animal => (
-                        <div
-                          key={animal.id}
-                          onClick={() => setSelectedAnimal(animal)}
-                          className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 border-transparent hover:border-emerald-400 transform hover:-translate-y-1"
-                        >
-                          <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
-                            <img 
-                              src={animal.profilePicture} 
-                              alt={animal.name}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute top-3 right-3">
-                              <span className="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
-                                {animal.breed}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          <div className="p-4 sm:p-5">
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">{animal.name}</h3>
-                            <p className="text-xs sm:text-sm text-gray-500 mb-4">{animal.tagNumber}</p>
-                            
-                            <div className="space-y-2 text-sm">
-                              <div className="flex items-center text-gray-600">
-                                <UserIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                <span className="font-medium min-w-fit">Propriétaire:</span>
-                                <span className="ml-2 truncate">{animal.owner}</span>
-                              </div>
-                              <div className="flex items-center text-gray-600">
-                                <CalendarIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                <span className="font-medium">Âge:</span>
-                                <span className="ml-2">{calculateAge(animal.dateOfBirth)} ans</span>
-                              </div>
-                              {animalType === 'cow' && (
-                                <div className="flex items-center text-gray-600">
-                                  <DropletIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                  <span className="font-medium">Lait:</span>
-                                  <span className="ml-2">{animal.milkCapacity}</span>
-                                </div>
-                              )}
-                              {animalType === 'sheep' && (
-                                <div className="flex items-center text-gray-600">
-                                  <div className="w-4 h-4 mr-2 flex-shrink-0">✨</div>
-                                  <span className="font-medium">Laine:</span>
-                                  <span className="ml-2">{animal.woolQuality}</span>
-                                </div>
-                              )}
-                            </div>
-                            
-                            <div className="mt-4 pt-4 border-t border-gray-100">
-                              <div className="flex items-center justify-between">
-                                <span className="text-xs sm:text-sm text-gray-500">Vaccinations</span>
-                                <span className="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
-                                  {animal.vaccinations.length}
+                      filteredAnimals.map(animal => {
+                        const pregnancyInfo = getPregnancyInfo(animal);
+                        const milkInfo = getMilkProductionInfo(animal);
+                        const isPregnant = pregnancyInfo && pregnancyInfo.isPregnant;
+                        const isLactating = milkInfo && milkInfo.isLactating;
+
+                        return (
+                          <div
+                            key={animal.id}
+                            onClick={() => setSelectedAnimal(animal)}
+                            className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 ${
+                              isPregnant 
+                                ? 'border-pink-400 hover:border-pink-500' 
+                                : isLactating
+                                ? 'border-purple-400 hover:border-purple-500'
+                                : 'border-transparent hover:border-emerald-400'
+                            } transform hover:-translate-y-1`}
+                          >
+                            <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
+                              <img 
+                                src={animal.profilePicture} 
+                                alt={animal.name}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute top-3 right-3 flex flex-col gap-2">
+                                <span className="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
+                                  {animal.breed}
                                 </span>
+                                {isPregnant && (
+                                  <span className="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                    <HeartIcon size={14} />
+                                    Enceinte
+                                  </span>
+                                )}
+                                {isLactating && !isPregnant && (
+                                  <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                    <DropletIcon size={14} />
+                                    Lactation
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            
+                            <div className="p-4 sm:p-5">
+                              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">{animal.name}</h3>
+                              <p className="text-xs sm:text-sm text-gray-500 mb-4">{animal.tagNumber}</p>
+                              
+                              <div className="space-y-2 text-sm">
+                                <div className="flex items-center text-gray-600">
+                                  <UserIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
+                                  <span className="font-medium min-w-fit">Propriétaire:</span>
+                                  <span className="ml-2 truncate">{animal.owner}</span>
+                                </div>
+                                <div className="flex items-center text-gray-600">
+                                  <CalendarIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
+                                  <span className="font-medium">Âge:</span>
+                                  <span className="ml-2">{calculateAge(animal.dateOfBirth)} ans</span>
+                                </div>
+                                
+                                {isPregnant && pregnancyInfo && (
+                                  <div className="bg-pink-50 rounded-lg p-2 mt-2 border border-pink-200">
+                                    <div className="flex items-center text-pink-700 text-xs">
+                                      <BabyIcon size={14} className="mr-1" />
+                                      <span className="font-semibold">Accouchement dans {pregnancyInfo.daysUntilDelivery} jours</span>
+                                    </div>
+                                    <p className="text-xs text-pink-600 mt-1">
+                                      ({pregnancyInfo.monthsPregnant} mois de grossesse)
+                                    </p>
+                                  </div>
+                                )}
+
+                                {isLactating && milkInfo && !isPregnant && (
+                                  <div className="bg-purple-50 rounded-lg p-2 mt-2 border border-purple-200">
+                                    <div className="flex items-center text-purple-700 text-xs">
+                                      <DropletIcon size={14} className="mr-1" />
+                                      <span className="font-semibold">Lactation: {milkInfo.daysSinceBirth} jours</span>
+                                    </div>
+                                    <p className="text-xs text-purple-600 mt-1">
+                                      ({milkInfo.monthsSinceBirth} mois depuis la naissance)
+                                    </p>
+                                  </div>
+                                )}
+
+                                {animalType === 'cow' && !isPregnant && !isLactating && (
+                                  <div className="flex items-center text-gray-600">
+                                    <DropletIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
+                                    <span className="font-medium">Lait:</span>
+                                    <span className="ml-2">{animal.milkCapacity}</span>
+                                  </div>
+                                )}
+                                {animalType === 'sheep' && (
+                                  <div className="flex items-center text-gray-600">
+                                    <div className="w-4 h-4 mr-2 flex-shrink-0">✨</div>
+                                    <span className="font-medium">Laine:</span>
+                                    <span className="ml-2">{animal.woolQuality}</span>
+                                  </div>
+                                )}
+                              </div>
+                              
+                              <div className="mt-4 pt-4 border-t border-gray-100">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs sm:text-sm text-gray-500">Vaccinations</span>
+                                  <span className="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
+                                    {animal.vaccinations.length}
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))
+                        );
+                      })
                     ) : (
                       <div className="col-span-full text-center py-16">
                         <div className="text-6xl mb-4">🔍</div>
-                        <p className="text-gray-500 text-lg">Aucun {activeTab === 'cows' ? 'vaches' : 'moutons'} trouvé correspondant à votre recherche.</p>
+                        <p className="text-gray-500 text-lg">
+                          Aucun {activeTab === 'cows' ? 'vaches' : 'moutons'} trouvé correspondant à votre recherche.
+                        </p>
                       </div>
                     )}
                   </div>
 
                   <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
                       <div className="text-center p-4 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl">
                         <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                           {currentAnimals.length}
                         </p>
                         <p className="text-gray-600 text-sm sm:text-base mt-1">Total {activeTab === 'cows' ? 'Vaches' : 'Moutons'}</p>
                       </div>
+                      
+                      {activeTab === 'cows' && (
+                        <>
+                          <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl">
+                            <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+                              {pregnantCount}
+                            </p>
+                            <p className="text-gray-600 text-sm sm:text-base mt-1">Enceintes</p>
+                          </div>
+                          
+                          <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl">
+                            <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                              {lactatingCount}
+                            </p>
+                            <p className="text-gray-600 text-sm sm:text-base mt-1">En Lactation</p>
+                          </div>
+                        </>
+                      )}
+                      
                       <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
                         <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                           {new Set(currentAnimals.map(a => a.owner)).size}
                         </p>
                         <p className="text-gray-600 text-sm sm:text-base mt-1">Propriétaires</p>
                       </div>
-                      <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl col-span-2 sm:col-span-1">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                      
+                      <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl">
+                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
                           {currentAnimals.reduce((sum, animal) => sum + animal.vaccinations.length, 0)}
                         </p>
                         <p className="text-gray-600 text-sm sm:text-base mt-1">Vaccinations</p>
@@ -509,6 +662,12 @@
               </div>
             );
           }
+
+          // Detail view for selected animal
+          const pregnancyInfo = getPregnancyInfo(selectedAnimal);
+          const milkInfo = getMilkProductionInfo(selectedAnimal);
+          const isPregnant = pregnancyInfo && pregnancyInfo.isPregnant;
+          const isLactating = milkInfo && milkInfo.isLactating;
 
           return (
             <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
@@ -532,6 +691,22 @@
                       alt={selectedAnimal.name}
                       className="w-full h-full object-cover opacity-90"
                     />
+                    {isPregnant && (
+                      <div className="absolute top-4 right-4">
+                        <span className="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                          <HeartIcon size={18} />
+                          Enceinte
+                        </span>
+                      </div>
+                    )}
+                    {isLactating && !isPregnant && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                          <DropletIcon size={18} />
+                          En Lactation
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="p-6 sm:p-8">
@@ -581,6 +756,132 @@
                   </div>
                 </div>
 
+                {/* Pregnancy Information Section */}
+                {isPregnant && pregnancyInfo && (
+                  <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-6">
+                    <div className="flex items-center mb-6">
+                      <div className="bg-gradient-to-br from-pink-500 to-rose-500 p-3 rounded-xl mr-3">
+                        <HeartIcon size={24} className="text-white" />
+                      </div>
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Informations de Grossesse</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 border-2 border-pink-200">
+                        <div className="flex items-center mb-2">
+                          <CalendarIcon size={20} className="text-pink-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Date de Grossesse</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{formatDate(selectedAnimal.pregnancyDate)}</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-6 border-2 border-rose-200">
+                        <div className="flex items-center mb-2">
+                          <BabyIcon size={20} className="text-rose-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Date d'Accouchement Estimée</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{formatDate(pregnancyInfo.estimatedDelivery)}</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-200">
+                        <div className="flex items-center mb-2">
+                          <CalendarIcon size={20} className="text-purple-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Durée de Grossesse</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{pregnancyInfo.monthsPregnant} mois</p>
+                        <p className="text-sm text-gray-600 mt-1">({pregnancyInfo.daysPregnant} jours)</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border-2 border-indigo-200">
+                        <div className="flex items-center mb-2">
+                          <CalendarIcon size={20} className="text-indigo-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Jours Restants</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{pregnancyInfo.daysUntilDelivery} jours</p>
+                        <p className="text-sm text-gray-600 mt-1">(~{Math.ceil(pregnancyInfo.daysUntilDelivery / 7)} semaines)</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 bg-pink-100 border-l-4 border-pink-500 p-4 rounded-lg">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0">
+                          <svg className="h-5 w-5 text-pink-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <div className="ml-3">
+                          <p className="text-sm text-pink-800 font-medium">
+                            Cette vache est actuellement enceinte. La date d'accouchement estimée est calculée automatiquement à 9 mois à partir de la date de grossesse.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Milk Production Information Section */}
+                {isLactating && milkInfo && (
+                  <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-6">
+                    <div className="flex items-center mb-6">
+                      <div className="bg-gradient-to-br from-purple-500 to-indigo-500 p-3 rounded-xl mr-3">
+                        <DropletIcon size={24} className="text-white" />
+                      </div>
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Production de Lait</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-200">
+                        <div className="flex items-center mb-2">
+                          <CalendarIcon size={20} className="text-purple-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Date de Naissance du Veau</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{formatDate(selectedAnimal.birthDate)}</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border-2 border-indigo-200">
+                        <div className="flex items-center mb-2">
+                          <DropletIcon size={20} className="text-indigo-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Durée de Lactation</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{milkInfo.monthsSinceBirth} mois</p>
+                        <p className="text-sm text-gray-600 mt-1">({milkInfo.daysSinceBirth} jours)</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-blue-200">
+                        <div className="flex items-center mb-2">
+                          <CalendarIcon size={20} className="text-blue-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Semaines de Lactation</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{milkInfo.weeksSinceBirth} semaines</p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 border-2 border-cyan-200">
+                        <div className="flex items-center mb-2">
+                          <DropletIcon size={20} className="text-cyan-600 mr-2" />
+                          <p className="text-sm text-gray-600 font-medium">Production Quotidienne</p>
+                        </div>
+                        <p className="text-2xl font-bold text-gray-800">{selectedAnimal.milkCapacity}</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 bg-purple-100 border-l-4 border-purple-500 p-4 rounded-lg">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0">
+                          <svg className="h-5 w-5 text-purple-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <div className="ml-3">
+                          <p className="text-sm text-purple-800 font-medium">
+                            Cette vache est en période de lactation depuis {milkInfo.daysSinceBirth} jours. La durée est calculée automatiquement à partir de la date de naissance du veau.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Vaccination History Section */}
                 <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
                   <div className="flex items-center mb-6">
                     <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-3 rounded-xl mr-3">
