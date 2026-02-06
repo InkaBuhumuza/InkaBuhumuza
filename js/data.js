@@ -227,5 +227,10 @@ const farmGallery = [
     id: 1,
     url: "./gallery/buhumuza-05-2026_imisi_yambere.jpeg",
     comment: "Yafashwe na papa aturukije mundwi yambere ziri Buhumuza 05/02/2026"
+  },
+  {
+    id: 2,
+    url: "./gallery/yamubumbe-05-02-2026.jpeg",
+    comment: "yamubumbe iBuhumuza le 05/02/2026 zigishika"
   }
 ];
