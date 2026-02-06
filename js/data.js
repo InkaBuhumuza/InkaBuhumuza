@@ -84,6 +84,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-02-05", vaccine: "Multivitamine", administered: "Dr. Armel" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" }
