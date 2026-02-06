@@ -9,13 +9,6 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React and ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
     <style>
         body {
             margin: 0;
@@ -28,12 +21,6 @@
         
         * {
             box-sizing: border-box;
-        }
-        
-        #root {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
         
         html {
@@ -52,1557 +39,315 @@
                 opacity: .7;
             }
         }
-
-        .timeline-line {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #10b981, #06b6d4);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 1rem;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 1rem;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .file-upload-label {
-            cursor: pointer;
-            display: inline-block;
-        }
     </style>
 </head>
 
 <body>
     <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useRef } = React;
+    <script src="./js/data.js"></script>
+    <script src="./js/icons.js"></script>
+    <script src="./js/utils.js"></script>
+    <script>
+        // Filter and search functionality
+        let filterTab = 'all';
+        let searchQuery = '';
 
-        // Simple icon components using inline SVG
-        const SearchIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
-            </svg>
-        );
-
-        const ArrowLeftIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-        );
-
-        const SyringeIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="m18 2 4 4"></path>
-                <path d="m17 7 3-3"></path>
-                <path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"></path>
-                <path d="m9 11 4 4"></path>
-                <path d="m5 19-3 3"></path>
-                <path d="m14 4 6 6"></path>
-            </svg>
-        );
-
-        const CalendarIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-        );
-
-        const DropletIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-        );
-
-        const UserIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-        );
-
-        const HeartIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-        );
-
-        const BabyIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M9 12h.01"></path>
-                <path d="M15 12h.01"></path>
-                <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"></path>
-                <path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"></path>
-            </svg>
-        );
-
-        const ClockIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-        );
-
-        const ImageIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-        );
-
-        const StethoscopeIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
-                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
-                <circle cx="20" cy="10" r="2"></circle>
-            </svg>
-        );
-
-        const PhoneIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-        );
-
-        const MapPinIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-        );
-
-        const PlusIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-        );
-
-        const XIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        );
-
-        const TrashIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <polyline points="3 6 5 6 21 6"></polyline>
-                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-            </svg>
-        );
-
-        const UploadIcon = ({ size = 20, className = "" }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-        );
-
-        // Sample data with reproductive history
-        const initialCows = [
-          {
-            id: 1,
-            name: "Bikari",
-            breed: "Salers",
-            dateOfBirth: "2020-03-15",
-            owner: "Papa",
-            milkCapacity: "10 L/day",
-            color: "Black & brown",
-            tagNumber: "HF-001",
-            profilePicture: "./images/bikari.jpg",
-            gallery: [],
-            reproductiveHistory: [
-              {
-                type: "lactation",
-                startDate: "-",
-                endDate: "2025-06-28 ",
-                status: "completed"
-              },
-              {
-                type: "pregnancy",
-                pregnancyDate: "2025-07-17",
-                estimatedDelivery: "2026-04-17",
-                status: "active"
-              }
-            ],
-            vaccinations: [
-              { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 2,
-            name: "Mwamakare",
-            breed: "Salers",
-            dateOfBirth: "2021-11-22",
-            owner: "Papa",
-            milkCapacity: "10 L/day",
-            color: "Dark Brown",
-            tagNumber: "JR-012",
-            profilePicture: "./images/mwamakare.jpg",
-            gallery: [],
-            reproductiveHistory: [
-              {
-                type: "lactation",
-                startDate: "-",
-                endDate: "2025-06-28 ",
-                status: "completed"
-              },
-  
-              {
-                type: "pregnancy",
-                pregnancyDate: "2025-07-11",
-                estimatedDelivery: "2026-04-11",
-                status: "active"
-              }
-            ],
-            vaccinations: [
-              { date: "2024-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Yaheruka kwima ntiyatewe", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 3,
-            name: "Yamaza Mubumbe",
-            breed: "Salers",
-            dateOfBirth: "2021-05-08",
-            owner: "Papa",
-            milkCapacity: "10 L/day",
-            color: "Dark Brown",
-            tagNumber: "GU-003",
-            profilePicture: "./images/yamaza_mubumbe.jpg",
-            gallery: [],
-            reproductiveHistory: [
- 
-              {
-                type: "lactation",
-                startDate: "2025-10-01", 
-                endDate: null,
-                status: "active"
-              }
-            ],
-            vaccinations: [
-              { date: "2024-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 4,
-            name: "Ishuri",
-            breed: "Frisonne",
-            dateOfBirth: "2023-07-14",
-            owner: "Khalid",
-            milkCapacity: "-",
-            color: "Brown & White",
-            tagNumber: "BS-008",
-            profilePicture: "./images/ishuri.jpg",
-            gallery: [],
-            reproductiveHistory: [],
-            vaccinations: [
-              { date: "2024-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 5,
-            name: "Yamaza Maman",
-            breed: "Salers",
-            dateOfBirth: "2023-05-30",
-            owner: "Khalid",
-            milkCapacity: "-",
-            color: "Brown & White",
-            tagNumber: "HF-015",
-            profilePicture: "./images/yamaza_maman.jpg",
-            gallery: [],
-            reproductiveHistory: [],
-            vaccinations: [
-              { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 6,
-            name: "Mukunzi",
-            breed: "Salers",
-            dateOfBirth: "2022-05-30",
-            owner: "Maman",
-            milkCapacity: "10 L/day",
-            color: "Brown & White",
-            tagNumber: "HF-016",
-            profilePicture: "./images/mukunzi.jpg",
-            gallery: [],
-            reproductiveHistory: [
-              {
-                type: "pregnancy",
-                pregnancyDate: "2025-06-14",
-                estimatedDelivery: "2026-03-14",
-                status: "active"
-              }
-            ],
-            vaccinations: [
-              { date: "2024-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
-            ]
-          },
-          {
-            id: 7,
-            name: "Rwabikari (Bikari inyana #1)",
-            breed: "Salers",
-            dateOfBirth: "2023-12-30",
-            owner: "Papa",
-            milkCapacity: "-",
-            color: "Brown & White",
-            tagNumber: "HF-017",
-            profilePicture: "./images/rwabikari2.jpeg",
-            gallery: [],
-            reproductiveHistory: [],
-            vaccinations: [
-              { date: "2024-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
-            ]
-          },
-          {
-            id: 8,
-            name: "Yamwamakare (Mwamakare inyana #1)",
-            breed: "Salers",
-            dateOfBirth: "2023-12-30",
-            owner: "Papa",
-            milkCapacity: "-",
-            color: "Brown & White",
-            tagNumber: "HE-018",
-            profilePicture: "./images/yamwamakare.jpg",
-            gallery: [],
-            reproductiveHistory: [],
-            vaccinations: [
-              { date: "2024-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-              { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
-            ]
-          },
-          {
-            id: 9,
-            name: "Yamubumbe (Mubumbe inyana #1)",
-            breed: "Salers",
-            dateOfBirth: "2023-12-30",
-            owner: "Papa",
-            milkCapacity: "-",
-            color: "Brown & White",
-            tagNumber: "HF-017",
-            profilePicture: "./images/yamubumbe.jpeg",
-            gallery: [],
-            reproductiveHistory: [],
-            vaccinations: []
-          }
-        ];
-
-        // Initial doctors data
-        const initialDoctors = [
-          {
-            id: 1,
-            name: "Dr. Deo",
-            phone: "65676155",
-            location: "Bujumbura",
-            comment: "Vétérinaire principal de la ferme Mugero"
-          },
-          {
-            id: 2,
-            name: "Dr. Armel",
-            phone: "69121101 ",
-            location: "Cankuzo (bpae)",
-            comment: "Vétérinaire principal de la ferme Buhumuza. Aratanga insemination yama race: Frisonne Pie-Noir, bbb (bleu blanc belge) na Jersey "
-          }
-        ];
-
-        const LivestockManagementApp = () => {
-          const [cows, setCows] = useState(initialCows);
-          const [doctors, setDoctors] = useState(initialDoctors);
-          const [farmGallery, setFarmGallery] = useState([
-
-            {
-              id: 1,
-              url: "./gallery/buhumuza-05-2026_imisi_yambere.jpeg",
-              comment: "Yafashwe na papa aturukije mundwi yambere ziri Buhumuza 05/02/2026"
-            }
-          ]);
-          const [filterTab, setFilterTab] = useState('all');
-          const [searchQuery, setSearchQuery] = useState('');
-          const [selectedAnimal, setSelectedAnimal] = useState(null);
-          const [showGalleryModal, setShowGalleryModal] = useState(false);
-          const [showFarmGalleryModal, setShowFarmGalleryModal] = useState(false);
-          const [showDoctorsModal, setShowDoctorsModal] = useState(false);
-          const [showAddPhotoModal, setShowAddPhotoModal] = useState(false);
-          const [showAddFarmPhotoModal, setShowAddFarmPhotoModal] = useState(false);
-          const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
-          const [newPhoto, setNewPhoto] = useState({ file: null, preview: '', comment: '' });
-          const [newFarmPhoto, setNewFarmPhoto] = useState({ file: null, preview: '', comment: '' });
-          const [newDoctor, setNewDoctor] = useState({ name: '', phone: '', location: '', comment: '' });
-          
-          const fileInputRef = useRef(null);
-          const farmFileInputRef = useRef(null);
-
-          // Get current status from reproductive history
-          const getCurrentStatus = (animal) => {
+        function getCurrentStatus(animal) {
             if (!animal.reproductiveHistory || animal.reproductiveHistory.length === 0) {
-              return { type: 'none', data: null };
+                return { type: 'none', data: null };
             }
 
             const activeEvent = animal.reproductiveHistory
-              .filter(event => event.status === 'active')
-              .sort((a, b) => {
-                const dateA = new Date(a.pregnancyDate || a.startDate);
-                const dateB = new Date(b.pregnancyDate || b.startDate);
-                return dateB - dateA;
-              })[0];
+                .filter(event => event.status === 'active')
+                .sort((a, b) => {
+                    const dateA = new Date(a.pregnancyDate || a.startDate);
+                    const dateB = new Date(b.pregnancyDate || b.startDate);
+                    return dateB - dateA;
+                })[0];
 
             if (!activeEvent) {
-              return { type: 'none', data: null };
+                return { type: 'none', data: null };
             }
 
             if (activeEvent.type === 'pregnancy') {
-              const pregnancyDate = new Date(activeEvent.pregnancyDate);
-              const estimatedDelivery = new Date(activeEvent.estimatedDelivery);
-              const today = new Date();
-              const daysPregnant = Math.floor((today - pregnancyDate) / (1000 * 60 * 60 * 24));
-              const daysUntilDelivery = Math.floor((estimatedDelivery - today) / (1000 * 60 * 60 * 24));
-              const monthsPregnant = Math.floor(daysPregnant / 30);
+                const pregnancyDate = new Date(activeEvent.pregnancyDate);
+                const estimatedDelivery = new Date(activeEvent.estimatedDelivery);
+                const today = new Date();
+                const daysPregnant = Math.floor((today - pregnancyDate) / (1000 * 60 * 60 * 24));
+                const daysUntilDelivery = Math.floor((estimatedDelivery - today) / (1000 * 60 * 60 * 24));
+                const monthsPregnant = Math.floor(daysPregnant / 30);
 
-              return {
-                type: 'pregnant',
-                data: {
-                  pregnancyDate: activeEvent.pregnancyDate,
-                  estimatedDelivery: activeEvent.estimatedDelivery,
-                  daysPregnant,
-                  daysUntilDelivery,
-                  monthsPregnant
-                }
-              };
+                return {
+                    type: 'pregnant',
+                    data: {
+                        pregnancyDate: activeEvent.pregnancyDate,
+                        estimatedDelivery: activeEvent.estimatedDelivery,
+                        daysPregnant,
+                        daysUntilDelivery,
+                        monthsPregnant
+                    }
+                };
             }
 
             if (activeEvent.type === 'lactation') {
-              const startDate = new Date(activeEvent.startDate);
-              const today = new Date();
-              const daysSinceBirth = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-              const monthsSinceBirth = Math.floor(daysSinceBirth / 30);
-              const weeksSinceBirth = Math.floor(daysSinceBirth / 7);
+                const startDate = new Date(activeEvent.startDate);
+                const today = new Date();
+                const daysSinceBirth = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+                const monthsSinceBirth = Math.floor(daysSinceBirth / 30);
+                const weeksSinceBirth = Math.floor(daysSinceBirth / 7);
 
-              return {
-                type: 'lactating',
-                data: {
-                  startDate: activeEvent.startDate,
-                  daysSinceBirth,
-                  monthsSinceBirth,
-                  weeksSinceBirth
-                }
-              };
+                return {
+                    type: 'lactating',
+                    data: {
+                        startDate: activeEvent.startDate,
+                        daysSinceBirth,
+                        monthsSinceBirth,
+                        weeksSinceBirth
+                    }
+                };
             }
 
             return { type: 'none', data: null };
-          };
+        }
 
-          // Filter animals
-          const getFilteredAnimals = () => {
+        function getFilteredAnimals() {
             let filtered = cows;
 
             if (filterTab === 'pregnant') {
-              filtered = filtered.filter(cow => getCurrentStatus(cow).type === 'pregnant');
+                filtered = filtered.filter(cow => getCurrentStatus(cow).type === 'pregnant');
             } else if (filterTab === 'lactating') {
-              filtered = filtered.filter(cow => getCurrentStatus(cow).type === 'lactating');
+                filtered = filtered.filter(cow => getCurrentStatus(cow).type === 'lactating');
             }
 
             return filtered.filter(animal =>
-              animal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              animal.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              animal.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              animal.tagNumber.toLowerCase().includes(searchQuery.toLowerCase())
+                animal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                animal.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                animal.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                animal.tagNumber.toLowerCase().includes(searchQuery.toLowerCase())
             );
-          };
+        }
 
-          const filteredAnimals = getFilteredAnimals();
+        function renderApp() {
+            const filteredAnimals = getFilteredAnimals();
+            const pregnantCount = cows.filter(cow => getCurrentStatus(cow).type === 'pregnant').length;
+            const lactatingCount = cows.filter(cow => getCurrentStatus(cow).type === 'lactating').length;
 
-          // Count statuses
-          const pregnantCount = cows.filter(cow => getCurrentStatus(cow).type === 'pregnant').length;
-          const lactatingCount = cows.filter(cow => getCurrentStatus(cow).type === 'lactating').length;
-
-          const calculateAge = (dob) => {
-            if (dob === "-" || !dob) return "-";
-            const birthDate = new Date(dob);
-            const today = new Date();
-            let age = today.getFullYear() - birthDate.getFullYear();
-            const monthDiff = today.getMonth() - birthDate.getMonth();
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-              age--;
-            }
-            return age;
-          };
-
-          const formatDate = (dateString) => {
-            if (dateString === "-" || !dateString) return "-";
-            const date = new Date(dateString);
-            return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
-          };
-
-          const handleFileChange = (e) => {
-            const file = e.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                setNewPhoto({ ...newPhoto, file: file, preview: reader.result });
-              };
-              reader.readAsDataURL(file);
-            }
-          };
-
-          const handleFarmFileChange = (e) => {
-            const file = e.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                setNewFarmPhoto({ ...newFarmPhoto, file: file, preview: reader.result });
-              };
-              reader.readAsDataURL(file);
-            }
-          };
-
-          const handleAddPhoto = () => {
-            if (newPhoto.preview && selectedAnimal) {
-              const updatedCows = cows.map(cow => {
-                if (cow.id === selectedAnimal.id) {
-                  return {
-                    ...cow,
-                    gallery: [...(cow.gallery || []), { url: newPhoto.preview, comment: newPhoto.comment, id: Date.now() }]
-                  };
-                }
-                return cow;
-              });
-              setCows(updatedCows);
-              setSelectedAnimal({
-                ...selectedAnimal,
-                gallery: [...(selectedAnimal.gallery || []), { url: newPhoto.preview, comment: newPhoto.comment, id: Date.now() }]
-              });
-              setNewPhoto({ file: null, preview: '', comment: '' });
-              setShowAddPhotoModal(false);
-              if (fileInputRef.current) fileInputRef.current.value = '';
-            }
-          };
-
-          const handleAddFarmPhoto = () => {
-            if (newFarmPhoto.preview) {
-              setFarmGallery([...farmGallery, { url: newFarmPhoto.preview, comment: newFarmPhoto.comment, id: Date.now() }]);
-              setNewFarmPhoto({ file: null, preview: '', comment: '' });
-              setShowAddFarmPhotoModal(false);
-              if (farmFileInputRef.current) farmFileInputRef.current.value = '';
-            }
-          };
-
-          const handleDeletePhoto = (photoId) => {
-            const updatedCows = cows.map(cow => {
-              if (cow.id === selectedAnimal.id) {
-                return {
-                  ...cow,
-                  gallery: cow.gallery.filter(photo => photo.id !== photoId)
-                };
-              }
-              return cow;
-            });
-            setCows(updatedCows);
-            setSelectedAnimal({
-              ...selectedAnimal,
-              gallery: selectedAnimal.gallery.filter(photo => photo.id !== photoId)
-            });
-          };
-
-          const handleDeleteFarmPhoto = (photoId) => {
-            setFarmGallery(farmGallery.filter(photo => photo.id !== photoId));
-          };
-
-          const handleAddDoctor = () => {
-            if (newDoctor.name && newDoctor.phone) {
-              setDoctors([...doctors, { ...newDoctor, id: Date.now() }]);
-              setNewDoctor({ name: '', phone: '', location: '', comment: '' });
-              setShowAddDoctorModal(false);
-            }
-          };
-
-          const handleDeleteDoctor = (doctorId) => {
-            setDoctors(doctors.filter(doctor => doctor.id !== doctorId));
-          };
-
-          const goHome = () => {
-            setSelectedAnimal(null);
-            setShowGalleryModal(false);
-            setShowFarmGalleryModal(false);
-            setShowDoctorsModal(false);
-            setShowAddPhotoModal(false);
-            setShowAddFarmPhotoModal(false);
-            setShowAddDoctorModal(false);
-          };
-
-          if (!selectedAnimal) {
-            return (
-              <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex flex-col">
-                <div className="bg-white shadow-md sticky top-0 z-50">
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-2 rounded-xl">
-                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                            Gestionnaire de Ferme BUHUMUZA
-                          </h1>
-                          <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">Système de Gestion du Bétail</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setShowFarmGalleryModal(true)}
-                          className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all"
-                        >
-                          <ImageIcon size={20} />
-                          <span className="hidden sm:inline">Galerie</span>
-                        </button>
-                        <button
-                          onClick={() => setShowDoctorsModal(true)}
-                          className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all"
-                        >
-                          <StethoscopeIcon size={20} />
-                          <span className="hidden sm:inline">Médecins</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
-                  <div className="bg-white rounded-2xl shadow-lg p-2 mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      <button
-                        onClick={() => setFilterTab('all')}
-                        className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
-                          filterTab === 'all'
-                            ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md'
-                            : 'text-gray-600 hover:bg-gray-100'
-                        }`}
-                      >
-                        Toutes ({cows.length})
-                      </button>
-                      <button
-                        onClick={() => setFilterTab('pregnant')}
-                        className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
-                          filterTab === 'pregnant'
-                            ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md'
-                            : 'text-gray-600 hover:bg-gray-100'
-                        }`}
-                      >
-                        <span className="mr-1">🤰</span>
-                        Enceintes ({pregnantCount})
-                      </button>
-                      <button
-                        onClick={() => setFilterTab('lactating')}
-                        className={`flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${
-                          filterTab === 'lactating'
-                            ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md'
-                            : 'text-gray-600 hover:bg-gray-100'
-                        }`}
-                      >
-                        <span className="mr-1">🍼</span>
-                        En Lactation ({lactatingCount})
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-6">
-                    <div className="relative">
-                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                        <SearchIcon size={20} />
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Rechercher des vaches..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none text-sm sm:text-base transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                    {filteredAnimals.length > 0 ? (
-                      filteredAnimals.map(animal => {
-                        const currentStatus = getCurrentStatus(animal);
-                        const isPregnant = currentStatus.type === 'pregnant';
-                        const isLactating = currentStatus.type === 'lactating';
-
-                        return (
-                          <div
-                            key={animal.id}
-                            onClick={() => setSelectedAnimal(animal)}
-                            className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 ${
-                              isPregnant 
-                                ? 'border-pink-400 hover:border-pink-500' 
-                                : isLactating
-                                ? 'border-purple-400 hover:border-purple-500'
-                                : 'border-transparent hover:border-emerald-400'
-                            } transform hover:-translate-y-1`}
-                          >
-                            <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
-                              <img 
-                                src={animal.profilePicture} 
-                                alt={animal.name}
-                                className="w-full h-full object-cover"
-                              />
-                              <div className="absolute top-3 right-3 flex flex-col gap-2">
-                                <span className="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
-                                  {animal.breed}
-                                </span>
-                                {isPregnant && (
-                                  <span className="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
-                                    <HeartIcon size={14} />
-                                    Enceinte
-                                  </span>
-                                )}
-                                {isLactating && !isPregnant && (
-                                  <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
-                                    <DropletIcon size={14} />
-                                    Lactation
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                            
-                            <div className="p-4 sm:p-5">
-                              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">{animal.name}</h3>
-                              <p className="text-xs sm:text-sm text-gray-500 mb-4">{animal.tagNumber}</p>
-                              
-                              <div className="space-y-2 text-sm">
-                                <div className="flex items-center text-gray-600">
-                                  <UserIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                  <span className="font-medium min-w-fit">Propriétaire:</span>
-                                  <span className="ml-2 truncate">{animal.owner}</span>
-                                </div>
-                                <div className="flex items-center text-gray-600">
-                                  <CalendarIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                  <span className="font-medium">Âge:</span>
-                                  <span className="ml-2">{calculateAge(animal.dateOfBirth)} ans</span>
-                                </div>
-                                
-                                {isPregnant && currentStatus.data && (
-                                  <div className="bg-pink-50 rounded-lg p-2 mt-2 border border-pink-200">
-                                    <div className="flex items-center text-pink-700 text-xs">
-                                      <BabyIcon size={14} className="mr-1" />
-                                      <span className="font-semibold">Accouchement dans {currentStatus.data.daysUntilDelivery} jours</span>
+            document.getElementById('root').innerHTML = `
+                <div class="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex flex-col">
+                    <!-- Header -->
+                    <div class="bg-white shadow-md sticky top-0 z-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-2 rounded-xl">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                        </svg>
                                     </div>
-                                    <p className="text-xs text-pink-600 mt-1">
-                                      ({currentStatus.data.monthsPregnant} mois de grossesse)
-                                    </p>
-                                  </div>
-                                )}
-
-                                {isLactating && currentStatus.data && !isPregnant && (
-                                  <div className="bg-purple-50 rounded-lg p-2 mt-2 border border-purple-200">
-                                    <div className="flex items-center text-purple-700 text-xs">
-                                      <DropletIcon size={14} className="mr-1" />
-                                      <span className="font-semibold">Lactation: {currentStatus.data.daysSinceBirth} jours</span>
+                                    <div>
+                                        <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                                            Gestionnaire de Ferme BUHUMUZA
+                                        </h1>
+                                        <p class="text-xs sm:text-sm text-gray-500 hidden sm:block">Système de Gestion du Bétail</p>
                                     </div>
-                                    <p className="text-xs text-purple-600 mt-1">
-                                      ({currentStatus.data.monthsSinceBirth} mois depuis la naissance)
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="gallery.html" class="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">
+                                        ${icons.image(20)}
+                                        <span class="hidden sm:inline">Galerie</span>
+                                    </a>
+                                    <a href="doctors.html" class="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">
+                                        ${icons.stethoscope(20)}
+                                        <span class="hidden sm:inline">Médecins</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
+                        <!-- Filter Tabs -->
+                        <div class="bg-white rounded-2xl shadow-lg p-2 mb-6">
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="filterTab = 'all'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                    Toutes (${cows.length})
+                                </button>
+                                <button onclick="filterTab = 'pregnant'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                    <span class="mr-1">🤰</span> Enceintes (${pregnantCount})
+                                </button>
+                                <button onclick="filterTab = 'lactating'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                    <span class="mr-1">🍼</span> En Lactation (${lactatingCount})
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Search Bar -->
+                        <div class="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-6">
+                            <div class="relative">
+                                <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    ${icons.search(20)}
+                                </div>
+                                <input type="text" placeholder="Rechercher des vaches..." value="${searchQuery}" oninput="searchQuery = this.value; renderApp();" class="w-full pl-12 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none text-sm sm:text-base transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Cows Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
+                            ${filteredAnimals.length > 0 ? filteredAnimals.map(animal => {
+                                const currentStatus = getCurrentStatus(animal);
+                                const isPregnant = currentStatus.type === 'pregnant';
+                                const isLactating = currentStatus.type === 'lactating';
+
+                                return `
+                                    <a href="cow.html?id=${animal.id}" class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 ${isPregnant ? 'border-pink-400 hover:border-pink-500' : isLactating ? 'border-purple-400 hover:border-purple-500' : 'border-transparent hover:border-emerald-400'} transform hover:-translate-y-1">
+                                        <div class="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
+                                            <img src="${animal.profilePicture}" alt="${animal.name}" class="w-full h-full object-cover">
+                                            <div class="absolute top-3 right-3 flex flex-col gap-2">
+                                                <span class="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
+                                                    ${animal.breed}
+                                                </span>
+                                                ${isPregnant ? `
+                                                    <span class="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                                        ${icons.heart(14)}
+                                                        Enceinte
+                                                    </span>
+                                                ` : ''}
+                                                ${isLactating && !isPregnant ? `
+                                                    <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                                        ${icons.droplet(14)}
+                                                        Lactation
+                                                    </span>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-4 sm:p-5">
+                                            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1">${animal.name}</h3>
+                                            <p class="text-xs sm:text-sm text-gray-500 mb-4">${animal.tagNumber}</p>
+                                            
+                                            <div class="space-y-2 text-sm">
+                                                <div class="flex items-center text-gray-600">
+                                                    ${icons.user(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                                    <span class="font-medium min-w-fit">Propriétaire:</span>
+                                                    <span class="ml-2 truncate">${animal.owner}</span>
+                                                </div>
+                                                <div class="flex items-center text-gray-600">
+                                                    ${icons.calendar(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                                    <span class="font-medium">Âge:</span>
+                                                    <span class="ml-2">${calculateAge(animal.dateOfBirth)} ans</span>
+                                                </div>
+                                                
+                                                ${isPregnant && currentStatus.data ? `
+                                                    <div class="bg-pink-50 rounded-lg p-2 mt-2 border border-pink-200">
+                                                        <div class="flex items-center text-pink-700 text-xs">
+                                                            ${icons.baby(14, 'mr-1')}
+                                                            <span class="font-semibold">Accouchement dans ${currentStatus.data.daysUntilDelivery} jours</span>
+                                                        </div>
+                                                        <p class="text-xs text-pink-600 mt-1">
+                                                            (${currentStatus.data.monthsPregnant} mois de grossesse)
+                                                        </p>
+                                                    </div>
+                                                ` : ''}
+
+                                                ${isLactating && currentStatus.data && !isPregnant ? `
+                                                    <div class="bg-purple-50 rounded-lg p-2 mt-2 border border-purple-200">
+                                                        <div class="flex items-center text-purple-700 text-xs">
+                                                            ${icons.droplet(14, 'mr-1')}
+                                                            <span class="font-semibold">Lactation: ${currentStatus.data.daysSinceBirth} jours</span>
+                                                        </div>
+                                                        <p class="text-xs text-purple-600 mt-1">
+                                                            (${currentStatus.data.monthsSinceBirth} mois depuis la naissance)
+                                                        </p>
+                                                    </div>
+                                                ` : ''}
+
+                                                ${!isPregnant && !isLactating ? `
+                                                    <div class="flex items-center text-gray-600">
+                                                        ${icons.droplet(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                                        <span class="font-medium">Lait:</span>
+                                                        <span class="ml-2">${animal.milkCapacity}</span>
+                                                    </div>
+                                                ` : ''}
+                                            </div>
+                                            
+                                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-xs sm:text-sm text-gray-500">Vaccinations</span>
+                                                    <span class="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
+                                                        ${animal.vaccinations.length}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                `;
+                            }).join('') : `
+                                <div class="col-span-full text-center py-16">
+                                    <div class="text-6xl mb-4">🔍</div>
+                                    <p class="text-gray-500 text-lg">
+                                        Aucun vaches trouvé correspondant à votre recherche.
                                     </p>
-                                  </div>
-                                )}
-
-                                {!isPregnant && !isLactating && (
-                                  <div className="flex items-center text-gray-600">
-                                    <DropletIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                    <span className="font-medium">Lait:</span>
-                                    <span className="ml-2">{animal.milkCapacity}</span>
-                                  </div>
-                                )}
-                              </div>
-                              
-                              <div className="mt-4 pt-4 border-t border-gray-100">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-xs sm:text-sm text-gray-500">Vaccinations</span>
-                                  <span className="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
-                                    {animal.vaccinations.length}
-                                  </span>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <div className="col-span-full text-center py-16">
-                        <div className="text-6xl mb-4">🔍</div>
-                        <p className="text-gray-500 text-lg">
-                          Aucun vaches trouvé correspondant à votre recherche.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-                      <div className="text-center p-4 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                          {cows.length}
-                        </p>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">Total Vaches</p>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                          {pregnantCount}
-                        </p>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">Enceintes</p>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                          {lactatingCount}
-                        </p>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">En Lactation</p>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                          {new Set(cows.map(a => a.owner)).size}
-                        </p>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">Propriétaires</p>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl">
-                        <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-                          {cows.reduce((sum, animal) => sum + animal.vaccinations.length, 0)}
-                        </p>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">Vaccinations</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <footer className="bg-white border-t border-gray-200 mt-8">
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <p className="text-center text-gray-600 text-sm">
-                      Site web créé et maintenu par <span className="font-bold text-emerald-600">Pilote Muhoza</span>
-                    </p>
-                  </div>
-                </footer>
-
-                {/* Farm Gallery Modal */}
-                {showFarmGalleryModal && (
-                  <div className="modal-overlay" onClick={() => setShowFarmGalleryModal(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-6">
-                          <h2 className="text-2xl font-bold text-gray-800">Galerie de la Ferme</h2>
-                          <button
-                            onClick={() => setShowFarmGalleryModal(false)}
-                            className="text-gray-500 hover:text-gray-700"
-                          >
-                            <XIcon size={24} />
-                          </button>
-                        </div>
-                        {/*
-                        <button
-                          onClick={() => setShowAddFarmPhotoModal(true)}
-                          className="w-full mb-4 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all"
-                        >
-                          <PlusIcon size={20} />
-                          Ajouter une Photo
-                        </button>
-                        */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {farmGallery.length > 0 ? (
-                            farmGallery.map(photo => (
-                              <div key={photo.id} className="border-2 border-gray-100 rounded-xl overflow-hidden hover:border-purple-200 transition-all">
-                                <div className="relative h-48 bg-gray-100">
-                                  <img 
-                                    src={photo.url} 
-                                    alt="Photo de galerie"
-                                    className="w-full h-full object-cover"
-                                  />
-                                  <button
-                                    onClick={() => handleDeleteFarmPhoto(photo.id)}
-                                    className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
-                                  >
-                                    <TrashIcon size={16} />
-                                  </button>
-                                </div>
-                                {photo.comment && (
-                                  <div className="p-3 bg-purple-50">
-                                    <p className="text-sm text-gray-700">{photo.comment}</p>
-                                  </div>
-                                )}
-                              </div>
-                            ))
-                          ) : (
-                            <div className="col-span-2 text-center py-12">
-                              <div className="text-6xl mb-4">📸</div>
-                              <p className="text-gray-500">Aucune photo dans la galerie</p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Add Farm Photo Modal */}
-                {showAddFarmPhotoModal && (
-                  <div className="modal-overlay" onClick={() => setShowAddFarmPhotoModal(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-6">
-                          <h2 className="text-2xl font-bold text-gray-800">Ajouter une Photo</h2>
-                          <button
-                            onClick={() => setShowAddFarmPhotoModal(false)}
-                            className="text-gray-500 hover:text-gray-700"
-                          >
-                            <XIcon size={24} />
-                          </button>
+                            `}
                         </div>
 
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Choisir une Photo *</label>
-                            <input
-                              ref={farmFileInputRef}
-                              type="file"
-                              accept="image/*"
-                              onChange={handleFarmFileChange}
-                              className="hidden"
-                              id="farm-file-upload"
-                            />
-                            <label 
-                              htmlFor="farm-file-upload"
-                              className="w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all"
-                            >
-                              {newFarmPhoto.preview ? (
-                                <img src={newFarmPhoto.preview} alt="Preview" className="max-h-48 rounded-lg mb-2" />
-                              ) : (
-                                <>
-                                  <UploadIcon size={48} className="text-gray-400 mb-2" />
-                                  <p className="text-sm text-gray-600 text-center">Cliquez pour sélectionner une image</p>
-                                  <p className="text-xs text-gray-500 text-center mt-1">PNG, JPG, GIF jusqu'à 10MB</p>
-                                </>
-                              )}
-                            </label>
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Commentaire</label>
-                            <textarea
-                              value={newFarmPhoto.comment}
-                              onChange={(e) => setNewFarmPhoto({ ...newFarmPhoto, comment: e.target.value })}
-                              rows="3"
-                              className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none resize-none"
-                              placeholder="Description de la photo..."
-                            />
-                          </div>
-
-                          <button
-                            onClick={handleAddFarmPhoto}
-                            disabled={!newFarmPhoto.preview}
-                            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            Ajouter
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Doctors Modal */}
-                {showDoctorsModal && (
-                  <div className="modal-overlay" onClick={() => setShowDoctorsModal(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-6">
-                          <h2 className="text-2xl font-bold text-gray-800">Informations des Médecins</h2>
-                          <button
-                            onClick={() => setShowDoctorsModal(false)}
-                            className="text-gray-500 hover:text-gray-700"
-                          >
-                            <XIcon size={24} />
-                          </button>
-                        </div>
-                        {/*
-                        <button
-                          onClick={() => setShowAddDoctorModal(true)}
-                          className="w-full mb-4 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all"
-                        >
-                          <PlusIcon size={20} />
-                          Ajouter un Médecin
-                        </button>
-                        */}
-
-                        <div className="space-y-4">
-                          {doctors.map(doctor => (
-                            <div key={doctor.id} className="border-2 border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:bg-blue-50 transition-all">
-                              <div className="flex items-start justify-between mb-3">
-                                <h3 className="font-bold text-lg text-gray-800">{doctor.name}</h3>
-                                {/*
-                                <button
-                                  onClick={() => handleDeleteDoctor(doctor.id)}
-                                  className="text-red-500 hover:text-red-700"
-                                >
-                                  <TrashIcon size={18} />
-                                </button>
-                                */}
-                              </div>
-                              <div className="space-y-2 text-sm">
-                                <div className="flex items-center text-gray-600">
-                                  <PhoneIcon size={16} className="mr-2 text-blue-500" />
-                                  <span className="font-medium">Téléphone:</span>
-                                  <span className="ml-2">{doctor.phone}</span>
-                                </div>
-                                <div className="flex items-center text-gray-600">
-                                  <MapPinIcon size={16} className="mr-2 text-blue-500" />
-                                  <span className="font-medium">Localisation:</span>
-                                  <span className="ml-2">{doctor.location}</span>
-                                </div>
-                                {doctor.comment && (
-                                  <div className="mt-2 p-2 bg-blue-50 rounded-lg">
-                                    <p className="text-gray-700 text-sm">{doctor.comment}</p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Add Doctor Modal */}
-                {showAddDoctorModal && (
-                  <div className="modal-overlay" onClick={() => setShowAddDoctorModal(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-6">
-                          <h2 className="text-2xl font-bold text-gray-800">Ajouter un Médecin</h2>
-                          <button
-                            onClick={() => setShowAddDoctorModal(false)}
-                            className="text-gray-500 hover:text-gray-700"
-                          >
-                            <XIcon size={24} />
-                          </button>
-                        </div>
-
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
-                            <input
-                              type="text"
-                              value={newDoctor.name}
-                              onChange={(e) => setNewDoctor({ ...newDoctor, name: e.target.value })}
-                              className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-                              placeholder="Dr. Nom"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Téléphone *</label>
-                            <input
-                              type="text"
-                              value={newDoctor.phone}
-                              onChange={(e) => setNewDoctor({ ...newDoctor, phone: e.target.value })}
-                              className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-                              placeholder="12345678"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Localisation</label>
-                            <input
-                              type="text"
-                              value={newDoctor.location}
-                              onChange={(e) => setNewDoctor({ ...newDoctor, location: e.target.value })}
-                              className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-                              placeholder="Ville"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Commentaire</label>
-                            <textarea
-                              value={newDoctor.comment}
-                              onChange={(e) => setNewDoctor({ ...newDoctor, comment: e.target.value })}
-                              rows="3"
-                              className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
-                              placeholder="Notes supplémentaires..."
-                            />
-                          </div>
-
-                          <button
-                            onClick={handleAddDoctor}
-                            disabled={!newDoctor.name || !newDoctor.phone}
-                            className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            Ajouter
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          }
-
-          // Detail view for selected animal
-          const currentStatus = getCurrentStatus(selectedAnimal);
-          const isPregnant = currentStatus.type === 'pregnant';
-          const isLactating = currentStatus.type === 'lactating';
-
-          return (
-            <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex flex-col">
-              <div className="bg-white shadow-md sticky top-0 z-50">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                  <div className="flex items-center justify-between">
-                    <button
-                      onClick={goHome}
-                      className="flex items-center text-gray-600 hover:text-gray-800 transition-colors font-medium"
-                    >
-                      <ArrowLeftIcon size={20} className="mr-2" />
-                      <span className="text-sm sm:text-base">Retour</span>
-                    </button>
-                    <button
-                      onClick={() => setShowGalleryModal(true)}
-                      className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all"
-                    >
-                      <ImageIcon size={20} />
-                      <span className="hidden sm:inline">Galerie</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
-                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6">
-                  <div className="relative h-48 sm:h-64 bg-gradient-to-br from-emerald-400 to-teal-500">
-                    <img 
-                      src={selectedAnimal.profilePicture} 
-                      alt={selectedAnimal.name}
-                      className="w-full h-full object-cover opacity-90"
-                    />
-                    {isPregnant && (
-                      <div className="absolute top-4 right-4">
-                        <span className="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                          <HeartIcon size={18} />
-                          Enceinte
-                        </span>
-                      </div>
-                    )}
-                    {isLactating && !isPregnant && (
-                      <div className="absolute top-4 right-4">
-                        <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                          <DropletIcon size={18} />
-                          En Lactation
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                      <div className="flex-1">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">{selectedAnimal.name}</h1>
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span className="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-bold">
-                            {selectedAnimal.breed}
-                          </span>
-                          <span className="text-gray-500 text-sm sm:text-base">Étiquette: {selectedAnimal.tagNumber}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-5 border-l-4 border-blue-500">
-                        <p className="text-sm text-gray-500 mb-1 font-medium">Date de naissance</p>
-                        <p className="text-lg sm:text-xl font-bold text-gray-800">{formatDate(selectedAnimal.dateOfBirth)}</p>
-                        <p className="text-sm text-gray-600 mt-1">Âge: {calculateAge(selectedAnimal.dateOfBirth)} ans</p>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-5 border-l-4 border-emerald-500">
-                        <p className="text-sm text-gray-500 mb-1 font-medium">Propriétaire</p>
-                        <p className="text-lg sm:text-xl font-bold text-gray-800">{selectedAnimal.owner}</p>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5 border-l-4 border-purple-500">
-                        <p className="text-sm text-gray-500 mb-1 font-medium">Capacité de lait</p>
-                        <p className="text-lg sm:text-xl font-bold text-gray-800">{selectedAnimal.milkCapacity}</p>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-5 border-l-4 border-orange-500">
-                        <p className="text-sm text-gray-500 mb-1 font-medium">Couleur</p>
-                        <p className="text-lg sm:text-xl font-bold text-gray-800">{selectedAnimal.color}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Reproductive History Timeline */}
-                {selectedAnimal.reproductiveHistory && selectedAnimal.reproductiveHistory.length > 0 && (
-                  <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-6">
-                    <div className="flex items-center mb-6">
-                      <div className="bg-gradient-to-br from-indigo-500 to-purple-500 p-3 rounded-xl mr-3">
-                        <ClockIcon size={24} className="text-white" />
-                      </div>
-                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Historique de Reproduction</h2>
-                    </div>
-
-                    <div className="relative pl-12">
-                      <div className="timeline-line"></div>
-                      
-                      <div className="space-y-6">
-                        {selectedAnimal.reproductiveHistory
-                          .slice()
-                          .reverse()
-                          .map((event, index) => {
-                            let bgColor, borderColor, textColor, icon, title, details;
-                            
-                            if (event.type === 'pregnancy') {
-                              bgColor = 'from-pink-50 to-rose-50';
-                              borderColor = 'border-pink-400';
-                              textColor = 'text-pink-700';
-                              icon = <HeartIcon size={20} className="text-pink-600" />;
-                              title = event.status === 'active' ? 'Grossesse en cours' : 'Grossesse';
-                              
-                              const pregDate = new Date(event.pregnancyDate);
-                              const estDelivery = new Date(event.estimatedDelivery);
-                              const today = new Date();
-                              const daysPregnant = Math.floor((today - pregDate) / (1000 * 60 * 60 * 24));
-                              const daysUntil = Math.floor((estDelivery - today) / (1000 * 60 * 60 * 24));
-                              
-                              details = (
-                                <div className="space-y-1 text-sm">
-                                  <p><span className="font-medium">Date de grossesse:</span> {formatDate(event.pregnancyDate)}</p>
-                                  <p><span className="font-medium">Accouchement estimé:</span> {formatDate(event.estimatedDelivery)}</p>
-                                  {event.status === 'active' && (
-                                    <p className="text-pink-600 font-semibold">Dans {daysUntil} jours ({Math.floor(daysPregnant / 30)} mois)</p>
-                                  )}
-                                </div>
-                              );
-                            } else if (event.type === 'birth') {
-                              bgColor = 'from-amber-50 to-orange-50';
-                              borderColor = 'border-amber-400';
-                              textColor = 'text-amber-700';
-                              icon = <BabyIcon size={20} className="text-amber-600" />;
-                              title = 'Naissance';
-                              details = (
-                                <div className="space-y-1 text-sm">
-                                  <p><span className="font-medium">Date de naissance:</span> {formatDate(event.birthDate)}</p>
-                                  <p><span className="font-medium">Nom du veau:</span> {event.calfName}</p>
-                                </div>
-                              );
-                            } else if (event.type === 'lactation') {
-                              bgColor = 'from-purple-50 to-indigo-50';
-                              borderColor = 'border-purple-400';
-                              textColor = 'text-purple-700';
-                              icon = <DropletIcon size={20} className="text-purple-600" />;
-                              title = event.status === 'active' ? 'Lactation en cours' : 'Période de lactation';
-                              
-                              const startDate = new Date(event.startDate);
-                              const endDate = event.endDate ? new Date(event.endDate) : new Date();
-                              const days = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
-                              const months = Math.floor(days / 30);
-                              
-                              details = (
-                                <div className="space-y-1 text-sm">
-                                  <p><span className="font-medium">Début:</span> {formatDate(event.startDate)}</p>
-                                  {event.endDate && (
-                                    <p><span className="font-medium">Fin:</span> {formatDate(event.endDate)}</p>
-                                  )}
-                                  <p className="text-purple-600 font-semibold">
-                                    {event.status === 'active' ? 'En cours:' : 'Durée:'} {days} jours ({months} mois)
-                                  </p>
-                                </div>
-                              );
-                            }
-
-                            return (
-                              <div key={index} className="relative">
-                                <div className={`absolute left-[-32px] top-2 w-8 h-8 rounded-full bg-gradient-to-br ${bgColor} border-4 ${borderColor} flex items-center justify-center z-10`}>
-                                  {icon}
+                        <!-- Statistics -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                                <div class="text-center p-4 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl">
+                                    <p class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                                        ${cows.length}
+                                    </p>
+                                    <p class="text-gray-600 text-sm sm:text-base mt-1">Total Vaches</p>
                                 </div>
                                 
-                                <div className={`bg-gradient-to-br ${bgColor} border-2 ${borderColor} rounded-xl p-4 sm:p-5 ${event.status === 'active' ? 'shadow-lg' : ''}`}>
-                                  <div className="flex items-start justify-between mb-2">
-                                    <h3 className={`font-bold text-base sm:text-lg ${textColor}`}>
-                                      {title}
-                                    </h3>
-                                    {event.status === 'active' && (
-                                      <span className="bg-white px-3 py-1 rounded-full text-xs font-bold text-green-600 border-2 border-green-300">
-                                        ACTIF
-                                      </span>
-                                    )}
-                                  </div>
-                                  <div className={textColor}>
-                                    {details}
-                                  </div>
+                                <div class="text-center p-4 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl">
+                                    <p class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+                                        ${pregnantCount}
+                                    </p>
+                                    <p class="text-gray-600 text-sm sm:text-base mt-1">Enceintes</p>
                                 </div>
-                              </div>
-                            );
-                          })}
-                      </div>
-                    </div>
-
-                    <div className="mt-6 bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-500 p-4 rounded-lg">
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0">
-                          <svg className="h-5 w-5 text-indigo-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <div className="ml-3">
-                          <p className="text-sm text-indigo-800 font-medium">
-                            L'historique complet de reproduction montre toutes les grossesses, naissances et périodes de lactation avec leurs dates et durées calculées automatiquement.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Vaccination History Section */}
-                <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-6">
-                  <div className="flex items-center mb-6">
-                    <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-3 rounded-xl mr-3">
-                      <SyringeIcon size={24} className="text-white" />
-                    </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Historique de vaccination</h2>
-                  </div>
-
-                  {selectedAnimal.vaccinations.length > 0 ? (
-                    <div className="space-y-4">
-                      {selectedAnimal.vaccinations
-                        .sort((a, b) => new Date(b.date) - new Date(a.date))
-                        .map((vaccination, index) => (
-                          <div
-                            key={index}
-                            className="border-2 border-gray-100 rounded-xl p-4 sm:p-6 hover:border-emerald-200 hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50 transition-all"
-                          >
-                            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                              <div className="flex-1">
-                                <h3 className="font-bold text-gray-800 text-base sm:text-lg mb-3">
-                                  {vaccination.vaccine}
-                                </h3>
-                                <div className="space-y-2 text-sm">
-                                  <div className="flex items-center text-gray-600">
-                                    <CalendarIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                    <span className="font-medium min-w-fit">Date:</span>
-                                    <span className="ml-2">{formatDate(vaccination.date)}</span>
-                                  </div>
-                                  <div className="flex items-center text-gray-600">
-                                    <UserIcon size={16} className="mr-2 text-emerald-500 flex-shrink-0" />
-                                    <span className="font-medium min-w-fit">Administré par:</span>
-                                    <span className="ml-2">{vaccination.administered}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex-shrink-0">
-                                <span className="inline-block bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-xs sm:text-sm font-bold">
-                                  {index === 0 ? 'Dernier' : `${index + 1} sur ${selectedAnimal.vaccinations.length}`}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-12">
-                      <div className="text-6xl mb-4">💉</div>
-                      <p className="text-gray-500 text-lg">Aucun dossier de vaccination disponible.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Footer */}
-              <footer className="bg-white border-t border-gray-200">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                  <p className="text-center text-gray-600 text-sm">
-                    Site web créé et maintenu par <span className="font-bold text-emerald-600">Pilote Muhoza</span>
-                  </p>
-                </div>
-              </footer>
-
-              {/* Gallery Modal */}
-              {showGalleryModal && (
-                <div className="modal-overlay" onClick={() => setShowGalleryModal(false)}>
-                  <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold text-gray-800">Galerie de {selectedAnimal.name}</h2>
-                        <button
-                          onClick={() => setShowGalleryModal(false)}
-                          className="text-gray-500 hover:text-gray-700"
-                        >
-                          <XIcon size={24} />
-                        </button>
-                      </div>
-                      {/*}
-                      <button
-                        onClick={() => setShowAddPhotoModal(true)}
-                        className="w-full mb-4 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all"
-                      >
-                        <PlusIcon size={20} />
-                        Ajouter une Photo
-                      </button>
-                      */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {selectedAnimal.gallery && selectedAnimal.gallery.length > 0 ? (
-                          selectedAnimal.gallery.map(photo => (
-                            <div key={photo.id} className="border-2 border-gray-100 rounded-xl overflow-hidden hover:border-purple-200 transition-all">
-                              <div className="relative h-48 bg-gray-100">
-                                <img 
-                                  src={photo.url} 
-                                  alt="Photo de galerie"
-                                  className="w-full h-full object-cover"
-                                />
                                 
-                                <button
-                                  onClick={() => handleDeletePhoto(photo.id)}
-                                  className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
-                                >
-                                  <TrashIcon size={16} />
-                                </button>
-                              </div>
-                              {photo.comment && (
-                                <div className="p-3 bg-purple-50">
-                                  <p className="text-sm text-gray-700">{photo.comment}</p>
+                                <div class="text-center p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl">
+                                    <p class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                                        ${lactatingCount}
+                                    </p>
+                                    <p class="text-gray-600 text-sm sm:text-base mt-1">En Lactation</p>
                                 </div>
-                              )}
+                                
+                                <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
+                                    <p class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                                        ${new Set(cows.map(a => a.owner)).size}
+                                    </p>
+                                    <p class="text-gray-600 text-sm sm:text-base mt-1">Propriétaires</p>
+                                </div>
+                                
+                                <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl">
+                                    <p class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                                        ${cows.reduce((sum, animal) => sum + animal.vaccinations.length, 0)}
+                                    </p>
+                                    <p class="text-gray-600 text-sm sm:text-base mt-1">Vaccinations</p>
+                                </div>
                             </div>
-                          ))
-                        ) : (
-                          <div className="col-span-2 text-center py-12">
-                            <div className="text-6xl mb-4">📸</div>
-                            <p className="text-gray-500">Aucune photo dans la galerie</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Add Photo Modal */}
-              {showAddPhotoModal && (
-                <div className="modal-overlay" onClick={() => setShowAddPhotoModal(false)}>
-                  <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold text-gray-800">Ajouter une Photo</h2>
-                        <button
-                          onClick={() => setShowAddPhotoModal(false)}
-                          className="text-gray-500 hover:text-gray-700"
-                        >
-                          <XIcon size={24} />
-                        </button>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Choisir une Photo *</label>
-                          <input
-                            ref={fileInputRef}
-                            type="file"
-                            accept="image/*"
-                            onChange={handleFileChange}
-                            className="hidden"
-                            id="file-upload"
-                          />
-                          <label 
-                            htmlFor="file-upload"
-                            className="w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all"
-                          >
-                            {newPhoto.preview ? (
-                              <img src={newPhoto.preview} alt="Preview" className="max-h-48 rounded-lg mb-2" />
-                            ) : (
-                              <>
-                                <UploadIcon size={48} className="text-gray-400 mb-2" />
-                                <p className="text-sm text-gray-600 text-center">Cliquez pour sélectionner une image</p>
-                                <p className="text-xs text-gray-500 text-center mt-1">PNG, JPG, GIF jusqu'à 10MB</p>
-                              </>
-                            )}
-                          </label>
                         </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Commentaire</label>
-                          <textarea
-                            value={newPhoto.comment}
-                            onChange={(e) => setNewPhoto({ ...newPhoto, comment: e.target.value })}
-                            rows="3"
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none resize-none"
-                            placeholder="Description de la photo..."
-                          />
-                        </div>
-
-                        <button
-                          onClick={handleAddPhoto}
-                          disabled={!newPhoto.preview}
-                          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          Ajouter
-                        </button>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        };
 
-        // Render the app
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<LivestockManagementApp />);
+                    <!-- Footer -->
+                    <footer class="bg-white border-t border-gray-200 mt-8">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                            <p class="text-center text-gray-600 text-sm">
+                                Site web créé et maintenu par <span class="font-bold text-emerald-600">Pilote Muhoza</span>
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        // Initial render
+        renderApp();
     </script>
 </body>
 </html>
