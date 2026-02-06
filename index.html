@@ -452,7 +452,14 @@
         const LivestockManagementApp = () => {
           const [cows, setCows] = useState(initialCows);
           const [doctors, setDoctors] = useState(initialDoctors);
-          const [farmGallery, setFarmGallery] = useState([]);
+          const [farmGallery, setFarmGallery] = useState([
+
+            {
+              id: 1,
+              url: "./gallery/buhumuza-05-2026_imisi_yambere.jpeg",
+              comment: "Yafashwe na papa aturukije mundwi yambere ziri Buhumuza 05/02/2026"
+            }
+          ]);
           const [filterTab, setFilterTab] = useState('all');
           const [searchQuery, setSearchQuery] = useState('');
           const [selectedAnimal, setSelectedAnimal] = useState(null);
