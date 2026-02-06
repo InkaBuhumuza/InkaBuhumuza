@@ -25,11 +25,11 @@ const cows = [
         status: "active"
       }
     ],
-    vaccinations: [
-      { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-      { date: "2024-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+    vaccinations: [      
+      { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2024-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
-      { date: "2024-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" }
+      { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
+      { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" }      
     ]
   },
   {
