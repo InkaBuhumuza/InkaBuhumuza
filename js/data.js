@@ -80,7 +80,7 @@ const cows = [
         type: "lactation",
         startDate: "2025-10-01", 
         endDate: null,
-        status: "complete"
+        status: "active"
       }
     ],
     vaccinations: [
