@@ -81,12 +81,6 @@ const cows = [
         startDate: "2025-10-01", 
         endDate: null,
         status: "complete"
-      },
-      {
-        type: "pregnancy",
-        pregnancyDate: "2025-10-15",
-        estimatedDelivery: "2026-07-15",
-        status: "active"
       }
     ],
     vaccinations: [
@@ -126,7 +120,14 @@ const cows = [
     tagNumber: "HF-015",
     profilePicture: "./images/yamaza_maman.jpg",
     gallery: [],
-    reproductiveHistory: [],
+    reproductiveHistory: [
+      {
+        type: "pregnancy",
+        pregnancyDate: "2025-10-15",
+        estimatedDelivery: "2026-07-15",
+        status: "active"
+      }
+    ],
     vaccinations: [
       { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
