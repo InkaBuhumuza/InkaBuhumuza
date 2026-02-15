@@ -80,6 +80,12 @@ const cows = [
         type: "lactation",
         startDate: "2025-10-01", 
         endDate: null,
+        status: "complete"
+      },
+      {
+        type: "pregnancy",
+        pregnancyDate: "2025-10-15",
+        estimatedDelivery: "2026-07-15",
         status: "active"
       }
     ],
