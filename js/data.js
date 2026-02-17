@@ -151,7 +151,8 @@ const cows = [
         type: "lactation",
         startDate: "2026-02-17", 
         endDate: null,
-        status: "active"
+        status: "active",
+        note: "Livré le 17/02/2026 — 3 semaines et 3 jours plus tôt que prévu. La date de la grossesse a peut-être été mal calculée.
       },
       {
         type: "pregnancy",
