@@ -157,7 +157,8 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2025-06-14",
         estimatedDelivery: "2026-03-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
-        status: "active"
+        status: "complete"
+        note: "Delivered on 17/02/2026 — 3 weeks and 3 days earlier than expected. The pregnancy date may have been miscalculated."
       }
     ],
     vaccinations: [
@@ -219,11 +220,11 @@ const cows = [
     id: 10,
     name: "Yamukunzi or Rwamukunzi",
     breed: "Salers",
-    dateOfBirth: "2026-02-30",
-    owner: "Papa",
+    dateOfBirth: "2026-02-17",
+    owner: "Maman",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "HF-017",
+    tagNumber: "Mukunzi inyana-1",
     profilePicture: "",
     gallery: [],
     reproductiveHistory: [],
