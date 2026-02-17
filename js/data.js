@@ -112,7 +112,7 @@ const cows = [
   {
     id: 5,
     name: "Yamaza Maman",
-    breed: "Salers",
+    breed: "15 juillet 2026",
     dateOfBirth: "2023-05-30",
     owner: "Khalid",
     milkCapacity: "-",
