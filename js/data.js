@@ -158,7 +158,6 @@ const cows = [
         pregnancyDate: "2025-06-14",
         estimatedDelivery: "2026-03-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
         status: "complete"
-        note: "Delivered on 17/02/2026 — 3 weeks and 3 days earlier than expected. The pregnancy date may have been miscalculated."
       }
     ],
     vaccinations: [
