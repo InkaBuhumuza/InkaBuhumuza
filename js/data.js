@@ -148,18 +148,18 @@ const cows = [
     gallery: [],
     reproductiveHistory: [
       {
-        type: "lactation",
-        startDate: "2026-02-17", 
-        endDate: null,
-        status: "active",
-        note: "Livré le 17/02/2026 — 3 semaines et 3 jours plus tôt que prévu. La date de la grossesse a peut-être été mal calculée."
-      },
-      {
         type: "pregnancy",
         pregnancyDate: "2025-06-14",
         estimatedDelivery: "2026-03-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
         status: "complete",
         note: "Delivered on 17/02/2026 — 3 weeks and 3 days earlier than expected. The pregnancy date may have been miscalculated."
+      },
+      {
+        type: "lactation",
+        startDate: "2026-02-17", 
+        endDate: null,
+        status: "active",
+        note: "Livré le 17/02/2026 — 3 semaines et 3 jours plus tôt que prévu. La date de la grossesse a peut-être été mal calculée."
       }
     ],
     vaccinations: [
@@ -169,13 +169,13 @@ const cows = [
   },
   {
     id: 7,
-    name: "Rwabikari (Bikari inyana #1)",
+    name: "Rwabikari",
     breed: "Salers",
     dateOfBirth: "2023-12-30",
     owner: "Papa",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "Bikari inyana-1",
+    tagNumber: "Bikari inyana #1",
     profilePicture: "./images/rwabikari2.jpeg",
     gallery: [],
     reproductiveHistory: [],
@@ -193,7 +193,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "Mwamakare inyana -1",
+    tagNumber: "Mwamakare inyana #1",
     profilePicture: "./images/yamwamakare.jpg",
     gallery: [],
     reproductiveHistory: [],
@@ -211,7 +211,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "Mubumbe inyana -1",
+    tagNumber: "Mubumbe inyana #1",
     profilePicture: "./images/yamubumbe.jpeg",
     gallery: [],
     reproductiveHistory: [],
@@ -225,7 +225,7 @@ const cows = [
     owner: "Maman",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "Mukunzi inyana-1",
+    tagNumber: "Mukunzi inyana #1",
     profilePicture: "",
     gallery: [],
     reproductiveHistory: [],
