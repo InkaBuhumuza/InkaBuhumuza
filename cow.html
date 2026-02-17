@@ -252,6 +252,11 @@
                                                             <p><span class="font-medium">Date de grossesse:</span> ${formatDate(event.pregnancyDate)}</p>
                                                             <p><span class="font-medium">Accouchement estimé:</span> ${formatDate(event.estimatedDelivery)}</p>
                                                             ${event.status === 'active' ? `<p class="text-pink-600 font-semibold">Dans ${daysUntil} jours (${Math.floor(daysPregnant / 30)} mois)</p>` : ''}
+                                                            ${event.note ? `
+                                                                <div class="mt-3 pt-3 border-t border-pink-200">
+                                                                    <p class="text-pink-800 italic">📝 ${event.note}</p>
+                                                                </div>
+                                                            ` : ''}
                                                         </div>
                                                     `;
                                                 } else if (event.type === 'birth') {
@@ -264,6 +269,11 @@
                                                         <div class="space-y-1 text-sm">
                                                             <p><span class="font-medium">Date de naissance:</span> ${formatDate(event.birthDate)}</p>
                                                             <p><span class="font-medium">Nom du veau:</span> ${event.calfName}</p>
+                                                            ${event.note ? `
+                                                                <div class="mt-3 pt-3 border-t border-amber-200">
+                                                                    <p class="text-amber-800 italic">📝 ${event.note}</p>
+                                                                </div>
+                                                            ` : ''}
                                                         </div>
                                                     `;
                                                 } else if (event.type === 'lactation') {
@@ -285,6 +295,11 @@
                                                             <p class="text-purple-600 font-semibold">
                                                                 ${event.status === 'active' ? 'En cours:' : 'Durée:'} ${days} jours (${months} mois)
                                                             </p>
+                                                            ${event.note ? `
+                                                                <div class="mt-3 pt-3 border-t border-purple-200">
+                                                                    <p class="text-purple-800 italic">📝 ${event.note}</p>
+                                                                </div>
+                                                            ` : ''}
                                                         </div>
                                                     `;
                                                 }
