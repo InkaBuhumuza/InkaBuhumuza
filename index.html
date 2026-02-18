@@ -60,6 +60,35 @@
             updateCowGrid();
         }
 
+        // Function to update filter tabs
+        function updateFilter(newFilter) {
+            filterTab = newFilter;
+            // Update both the tabs styling and the cow grid
+            updateFilterTabs();
+            updateCowGrid();
+        }
+
+        // Function to update filter tab styling
+        function updateFilterTabs() {
+            const pregnantCount = cows.filter(cow => getCurrentStatus(cow).type === 'pregnant').length;
+            const lactatingCount = cows.filter(cow => getCurrentStatus(cow).type === 'lactating').length;
+            
+            const filterTabsElement = document.getElementById('filter-tabs');
+            if (filterTabsElement) {
+                filterTabsElement.innerHTML = `
+                    <button onclick="updateFilter('all');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        Toutes (${cows.length})
+                    </button>
+                    <button onclick="updateFilter('pregnant');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        <span class="mr-1">🤰</span> Enceintes (${pregnantCount})
+                    </button>
+                    <button onclick="updateFilter('lactating');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        <span class="mr-1">🍼</span> En Lactation (${lactatingCount})
+                    </button>
+                `;
+            }
+        }
+
         // Function to update only the cow grid section
         function updateCowGrid() {
             const filteredAnimals = getFilteredAnimals();
@@ -290,14 +319,14 @@
                     <div class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
                         <!-- Filter Tabs -->
                         <div class="bg-white rounded-2xl shadow-lg p-2 mb-6">
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="filterTab = 'all'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                            <div id="filter-tabs" class="flex flex-wrap gap-2">
+                                <button onclick="updateFilter('all');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     Toutes (${cows.length})
                                 </button>
-                                <button onclick="filterTab = 'pregnant'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                <button onclick="updateFilter('pregnant');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     <span class="mr-1">🤰</span> Enceintes (${pregnantCount})
                                 </button>
-                                <button onclick="filterTab = 'lactating'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                <button onclick="updateFilter('lactating');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     <span class="mr-1">🍼</span> En Lactation (${lactatingCount})
                                 </button>
                             </div>
