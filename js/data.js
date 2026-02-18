@@ -209,7 +209,6 @@ const cows = [
     breed: "Salers",
     dateOfBirth: "2025-2-30",
     owner: "Papa",
-    milkCapacity: "-",
     color: "Black, Brown & White",
     tagNumber: "Mubumbe inyana #1",
     profilePicture: "./images/yamubumbe.jpeg",
