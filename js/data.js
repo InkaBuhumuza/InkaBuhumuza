@@ -159,7 +159,7 @@ const cows = [
         startDate: "2026-02-17", 
         endDate: null,
         status: "active",
-        note: "Livré le 17/02/2026 — 4 jours apres que prévu."
+        note: "Vêlée le 17/02/2026 — 4 jours apres que prévu."
       }
     ],
     vaccinations: [
