@@ -149,17 +149,17 @@ const cows = [
     reproductiveHistory: [
       {
         type: "pregnancy",
-        pregnancyDate: "2025-06-14",
-        estimatedDelivery: "2026-03-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
+        pregnancyDate: "2025-05-14",
+        estimatedDelivery: "2026-02-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
         status: "complete",
-        note: "Delivered on 17/02/2026 — 3 weeks and 3 days earlier than expected. The pregnancy date may have been miscalculated."
+        note: "Delivered on 17/02/2026 — 4 days later than expected."
       },
       {
         type: "lactation",
         startDate: "2026-02-17", 
         endDate: null,
         status: "active",
-        note: "Livré le 17/02/2026 — 3 semaines et 3 jours plus tôt que prévu. La date de la grossesse a peut-être été mal calculée."
+        note: "Livré le 17/02/2026 — 4 jours apres que prévu."
       }
     ],
     vaccinations: [
@@ -220,7 +220,7 @@ const cows = [
   {
     id: 10,
     name: "Yamukunzi",
-    breed: "Salers",
+    breed: "BD: 17 février 2026",
     dateOfBirth: "2026-02-17",
     owner: "Maman",
     milkCapacity: "-",
