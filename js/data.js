@@ -213,13 +213,13 @@ const cows = [
     color: "Brown & White",
     tagNumber: "Mubumbe inyana #1",
     profilePicture: "./images/yamubumbe.jpeg",
-    gallery: [],
+    gallery: ["./images/yamubumbe.jpeg"],
     reproductiveHistory: [],
     vaccinations: []
   },
   {
     id: 10,
-    name: "Yamukunzi or Rwamukunzi",
+    name: "Yamukunzi",
     breed: "Salers",
     dateOfBirth: "2026-02-17",
     owner: "Maman",
