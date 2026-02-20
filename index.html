@@ -53,6 +53,51 @@
         let filterTab = 'all';
         let searchQuery = '';
 
+        // Function to update search without re-rendering entire page
+        function updateSearch(value) {
+            searchQuery = value;
+            // Only update the cow grid, not the entire page
+            updateCowGrid();
+        }
+
+        // Function to update filter tabs
+        function updateFilter(newFilter) {
+            filterTab = newFilter;
+            // Update both the tabs styling and the cow grid
+            updateFilterTabs();
+            updateCowGrid();
+        }
+
+        // Function to update filter tab styling
+        function updateFilterTabs() {
+            const pregnantCount = cows.filter(cow => getCurrentStatus(cow).type === 'pregnant').length;
+            const lactatingCount = cows.filter(cow => getCurrentStatus(cow).type === 'lactating').length;
+            
+            const filterTabsElement = document.getElementById('filter-tabs');
+            if (filterTabsElement) {
+                filterTabsElement.innerHTML = `
+                    <button onclick="updateFilter('all');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        Toutes (${cows.length})
+                    </button>
+                    <button onclick="updateFilter('pregnant');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        <span class="mr-1">🤰</span> Enceintes (${pregnantCount})
+                    </button>
+                    <button onclick="updateFilter('lactating');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                        <span class="mr-1">🍼</span> En Lactation (${lactatingCount})
+                    </button>
+                `;
+            }
+        }
+
+        // Function to update only the cow grid section
+        function updateCowGrid() {
+            const filteredAnimals = getFilteredAnimals();
+            const cowGridElement = document.getElementById('cow-grid');
+            if (cowGridElement) {
+                cowGridElement.innerHTML = generateCowGrid(filteredAnimals);
+            }
+        }
+
         function getCurrentStatus(animal) {
             if (!animal.reproductiveHistory || animal.reproductiveHistory.length === 0) {
                 return { type: 'none', data: null };
@@ -128,6 +173,110 @@
             );
         }
 
+        // Function to generate cow grid HTML
+        function generateCowGrid(filteredAnimals) {
+            if (filteredAnimals.length === 0) {
+                return `
+                    <div class="col-span-full text-center py-16">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <p class="text-gray-500 text-lg">
+                            Aucun vaches trouvé correspondant à votre recherche.
+                        </p>
+                    </div>
+                `;
+            }
+
+            return filteredAnimals.map(animal => {
+                const currentStatus = getCurrentStatus(animal);
+                const isPregnant = currentStatus.type === 'pregnant';
+                const isLactating = currentStatus.type === 'lactating';
+
+                return `
+                    <a href="cow.html?id=${animal.id}" class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 ${isPregnant ? 'border-pink-400 hover:border-pink-500' : isLactating ? 'border-purple-400 hover:border-purple-500' : 'border-transparent hover:border-emerald-400'} transform hover:-translate-y-1">
+                        <div class="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
+                            <img src="${animal.profilePicture}" alt="${animal.name}" class="w-full h-full object-cover">
+                            <div class="absolute top-3 right-3 flex flex-col gap-2">
+                                <span class="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
+                                    ${animal.breed}
+                                </span>
+                                ${isPregnant ? `
+                                    <span class="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                        ${icons.heart(14)}
+                                        Enceinte
+                                    </span>
+                                ` : ''}
+                                ${isLactating && !isPregnant ? `
+                                    <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
+                                        ${icons.droplet(14)}
+                                        Lactation
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 sm:p-5">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1">${animal.name}</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mb-4">${animal.tagNumber}</p>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center text-gray-600">
+                                    ${icons.user(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                    <span class="font-medium min-w-fit">Propriétaire:</span>
+                                    <span class="ml-2 truncate">${animal.owner}</span>
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    ${icons.calendar(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                    <span class="font-medium">Âge:</span>
+                                    <span class="ml-2">${calculateAge(animal.dateOfBirth)} ans</span>
+                                </div>
+                                
+                                ${isPregnant && currentStatus.data ? `
+                                    <div class="bg-pink-50 rounded-lg p-2 mt-2 border border-pink-200">
+                                        <div class="flex items-center text-pink-700 text-xs">
+                                            ${icons.baby(14, 'mr-1')}
+                                            <span class="font-semibold">Accouchement dans ${currentStatus.data.daysUntilDelivery} jours</span>
+                                        </div>
+                                        <p class="text-xs text-pink-600 mt-1">
+                                            (${currentStatus.data.monthsPregnant} mois de grossesse)
+                                        </p>
+                                    </div>
+                                ` : ''}
+
+                                ${isLactating && currentStatus.data && !isPregnant ? `
+                                    <div class="bg-purple-50 rounded-lg p-2 mt-2 border border-purple-200">
+                                        <div class="flex items-center text-purple-700 text-xs">
+                                            ${icons.droplet(14, 'mr-1')}
+                                            <span class="font-semibold">Lactation: ${currentStatus.data.daysSinceBirth} jours</span>
+                                        </div>
+                                        <p class="text-xs text-purple-600 mt-1">
+                                            (${currentStatus.data.monthsSinceBirth} mois depuis la naissance)
+                                        </p>
+                                    </div>
+                                ` : ''}
+
+                                ${!isPregnant && !isLactating ? `
+                                    <div class="flex items-center text-gray-600">
+                                        ${icons.droplet(16, 'mr-2 text-emerald-500 flex-shrink-0')}
+                                        <span class="font-medium">Lait:</span>
+                                        <span class="ml-2">${animal.milkCapacity}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs sm:text-sm text-gray-500">Vaccinations</span>
+                                    <span class="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
+                                        ${animal.vaccinations.length}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
         function renderApp() {
             const filteredAnimals = getFilteredAnimals();
             const pregnantCount = cows.filter(cow => getCurrentStatus(cow).type === 'pregnant').length;
@@ -153,6 +302,10 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
+                                    <a href="notifications.html" class="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">
+                                        🔔
+                                        <span class="hidden sm:inline">Alertes</span>
+                                    </a>
                                     <a href="gallery.html" class="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 sm:px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">
                                         ${icons.image(20)}
                                         <span class="hidden sm:inline">Galerie</span>
@@ -170,14 +323,14 @@
                     <div class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
                         <!-- Filter Tabs -->
                         <div class="bg-white rounded-2xl shadow-lg p-2 mb-6">
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="filterTab = 'all'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                            <div id="filter-tabs" class="flex flex-wrap gap-2">
+                                <button onclick="updateFilter('all');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'all' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     Toutes (${cows.length})
                                 </button>
-                                <button onclick="filterTab = 'pregnant'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                <button onclick="updateFilter('pregnant');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'pregnant' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     <span class="mr-1">🤰</span> Enceintes (${pregnantCount})
                                 </button>
-                                <button onclick="filterTab = 'lactating'; renderApp();" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
+                                <button onclick="updateFilter('lactating');" class="flex-1 min-w-fit py-2 px-4 rounded-xl font-semibold transition-all duration-200 text-sm ${filterTab === 'lactating' ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}">
                                     <span class="mr-1">🍼</span> En Lactation (${lactatingCount})
                                 </button>
                             </div>
@@ -189,108 +342,12 @@
                                 <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     ${icons.search(20)}
                                 </div>
-                                <input type="text" placeholder="Rechercher des vaches..." value="${searchQuery}" oninput="searchQuery = this.value; renderApp();" class="w-full pl-12 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none text-sm sm:text-base transition-all">
+                                <input id="search-input" type="text" placeholder="Rechercher des vaches..." value="${searchQuery}" oninput="updateSearch(this.value);" class="w-full pl-12 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none text-sm sm:text-base transition-all">
                             </div>
                         </div>
 
                         <!-- Cows Grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                            ${filteredAnimals.length > 0 ? filteredAnimals.map(animal => {
-                                const currentStatus = getCurrentStatus(animal);
-                                const isPregnant = currentStatus.type === 'pregnant';
-                                const isLactating = currentStatus.type === 'lactating';
-
-                                return `
-                                    <a href="cow.html?id=${animal.id}" class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-2 ${isPregnant ? 'border-pink-400 hover:border-pink-500' : isLactating ? 'border-purple-400 hover:border-purple-500' : 'border-transparent hover:border-emerald-400'} transform hover:-translate-y-1">
-                                        <div class="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
-                                            <img src="${animal.profilePicture}" alt="${animal.name}" class="w-full h-full object-cover">
-                                            <div class="absolute top-3 right-3 flex flex-col gap-2">
-                                                <span class="bg-white/95 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg">
-                                                    ${animal.breed}
-                                                </span>
-                                                ${isPregnant ? `
-                                                    <span class="pregnant-badge bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
-                                                        ${icons.heart(14)}
-                                                        Enceinte
-                                                    </span>
-                                                ` : ''}
-                                                ${isLactating && !isPregnant ? `
-                                                    <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center gap-1">
-                                                        ${icons.droplet(14)}
-                                                        Lactation
-                                                    </span>
-                                                ` : ''}
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="p-4 sm:p-5">
-                                            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1">${animal.name}</h3>
-                                            <p class="text-xs sm:text-sm text-gray-500 mb-4">${animal.tagNumber}</p>
-                                            
-                                            <div class="space-y-2 text-sm">
-                                                <div class="flex items-center text-gray-600">
-                                                    ${icons.user(16, 'mr-2 text-emerald-500 flex-shrink-0')}
-                                                    <span class="font-medium min-w-fit">Propriétaire:</span>
-                                                    <span class="ml-2 truncate">${animal.owner}</span>
-                                                </div>
-                                                <div class="flex items-center text-gray-600">
-                                                    ${icons.calendar(16, 'mr-2 text-emerald-500 flex-shrink-0')}
-                                                    <span class="font-medium">Âge:</span>
-                                                    <span class="ml-2">${calculateAge(animal.dateOfBirth)} ans</span>
-                                                </div>
-                                                
-                                                ${isPregnant && currentStatus.data ? `
-                                                    <div class="bg-pink-50 rounded-lg p-2 mt-2 border border-pink-200">
-                                                        <div class="flex items-center text-pink-700 text-xs">
-                                                            ${icons.baby(14, 'mr-1')}
-                                                            <span class="font-semibold">Accouchement dans ${currentStatus.data.daysUntilDelivery} jours</span>
-                                                        </div>
-                                                        <p class="text-xs text-pink-600 mt-1">
-                                                            (${currentStatus.data.monthsPregnant} mois de grossesse)
-                                                        </p>
-                                                    </div>
-                                                ` : ''}
-
-                                                ${isLactating && currentStatus.data && !isPregnant ? `
-                                                    <div class="bg-purple-50 rounded-lg p-2 mt-2 border border-purple-200">
-                                                        <div class="flex items-center text-purple-700 text-xs">
-                                                            ${icons.droplet(14, 'mr-1')}
-                                                            <span class="font-semibold">Lactation: ${currentStatus.data.daysSinceBirth} jours</span>
-                                                        </div>
-                                                        <p class="text-xs text-purple-600 mt-1">
-                                                            (${currentStatus.data.monthsSinceBirth} mois depuis la naissance)
-                                                        </p>
-                                                    </div>
-                                                ` : ''}
-
-                                                ${!isPregnant && !isLactating ? `
-                                                    <div class="flex items-center text-gray-600">
-                                                        ${icons.droplet(16, 'mr-2 text-emerald-500 flex-shrink-0')}
-                                                        <span class="font-medium">Lait:</span>
-                                                        <span class="ml-2">${animal.milkCapacity}</span>
-                                                    </div>
-                                                ` : ''}
-                                            </div>
-                                            
-                                            <div class="mt-4 pt-4 border-t border-gray-100">
-                                                <div class="flex items-center justify-between">
-                                                    <span class="text-xs sm:text-sm text-gray-500">Vaccinations</span>
-                                                    <span class="bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
-                                                        ${animal.vaccinations.length}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                `;
-                            }).join('') : `
-                                <div class="col-span-full text-center py-16">
-                                    <div class="text-6xl mb-4">🔍</div>
-                                    <p class="text-gray-500 text-lg">
-                                        Aucun vaches trouvé correspondant à votre recherche.
-                                    </p>
-                                </div>
-                            `}
+                        <div id="cow-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
                         </div>
 
                         <!-- Statistics -->
@@ -348,6 +405,8 @@
 
         // Initial render
         renderApp();
+        // Populate the cow grid initially
+        updateCowGrid();
     </script>
 </body>
 </html>
