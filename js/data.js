@@ -262,5 +262,30 @@ const farmGallery = [
     id: 2,
     url: "./gallery/yamubumbe-05-02-2026.jpeg",
     comment: "yamubumbe iBuhumuza le 05/02/2026 zigishika"
+  },
+  {
+    id: 3,
+    url: "./gallery/senyeri.jpg",
+    comment: "Pilote, Papa baturukije, photo Mubumbe, Senyeri Juillet 2025"
+  }, 
+  {
+    id: 4,
+    url: "./gallery/Murugo_senyeri.jpg",
+    comment: "Murugo I senyeri zuhirwa, muri Photo: Pilote, Papa, Maman, Mbonimpa, Nduwayo, Senyeri Juillet 2025"
+  }, 
+  {
+    id: 5,
+    url: "./gallery/kuragira.jpg",
+    comment: "Pilote Kuragira, Senyeri Juillet 2025"
+  }, 
+  {
+    id: 6,
+    url: "./gallery/kuragira2.jpg",
+    comment: "Pilote Kuragira, Senyeri Juillet 2025"
+  }, 
+  {
+    id: 7,
+    url: "./gallery/Bikari_yaturutse.jpg",
+    comment: "Bikari, Senyeri Juillet 2025"
   }
 ];
