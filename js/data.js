@@ -286,5 +286,10 @@ const farmGallery = [
     id: 7,
     url: "./gallery/Bikari_yaturutse.jpg",
     comment: "Bikari, Senyeri Juillet 2025"
+  },
+  {
+    id: 8,
+    url: "./gallery/blessing_ninyana.jpg",
+    comment: "Blessing arikumwe n'inyana, Senyeri Juillet 2025"
   }
 ];
