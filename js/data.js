@@ -11,7 +11,15 @@ const cows = [
     tagNumber: "Bought 24-02-2026 ~ 3.5M",
     profilePicture: "./images/yanje.jpg",
     gallery: [],
-    reproductiveHistory: [],
+    reproductiveHistory: [
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-01-17",
+        estimatedDelivery: "2026-09-17",
+        status: "active",
+        note:"Ngo yoba yarimye imbere yuko tuyigura le 24-01-2026"
+      }
+    ],
     vaccinations: []
   },
   {
