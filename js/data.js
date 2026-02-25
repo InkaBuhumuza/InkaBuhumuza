@@ -1,7 +1,21 @@
 // Sample data with reproductive history
 const cows = [
-  {
+    {
     id: 1,
+    name: "Izina",
+    breed: "Bought=24-02-2026",
+    dateOfBirth: "-",
+    owner: "Pilote",
+    milkCapacity: "10 L/day",
+    color: "White & Brown", //  to be determined
+    tagNumber: "Bought 24-02-2026 ~ 3.5M",
+    profilePicture: "./images/yanje.jpg",
+    gallery: [],
+    reproductiveHistory: [],
+    vaccinations: []
+  },
+  {
+    id: 2,
     name: "Bikari",
     breed: "17 avril 2026",
     dateOfBirth: "2020-03-15",
@@ -33,7 +47,7 @@ const cows = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     name: "Mwamakare",
     breed: "11 avril 2026",
     dateOfBirth: "2021-11-22",
@@ -64,7 +78,7 @@ const cows = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     name: "Yamaza Mubumbe",
     breed: "Salers",
     dateOfBirth: "2021-05-08",
@@ -92,7 +106,7 @@ const cows = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     name: "Ishuri",
     breed: "Frisonne",
     dateOfBirth: "2023-07-14",
@@ -110,7 +124,7 @@ const cows = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     name: "Yamaza Maman",
     breed: "15 juillet 2026",
     dateOfBirth: "2023-05-30",
@@ -136,7 +150,7 @@ const cows = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     name: "Mukunzi",
     breed: "Salers",
     dateOfBirth: "2022-05-30",
@@ -168,7 +182,7 @@ const cows = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     name: "Rwabikari",
     breed: "Salers",
     dateOfBirth: "2023-12-30",
@@ -186,7 +200,7 @@ const cows = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     name: "Yamwamakare",
     breed: "Salers",
     dateOfBirth: "2023-12-30",
@@ -204,7 +218,7 @@ const cows = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     name: "Yamubumbe",
     breed: "Salers",
     dateOfBirth: "2025-2-30",
@@ -217,7 +231,7 @@ const cows = [
     vaccinations: []
   },
   {
-    id: 10,
+    id: 11,
     name: "Yamukunzi",
     breed: "BD: 17 février 2026",
     dateOfBirth: "2026-02-17",
