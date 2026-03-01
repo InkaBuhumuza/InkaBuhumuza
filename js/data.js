@@ -110,9 +110,10 @@ const cows = [
 
       {
         type: "lactation",
-        startDate: "2025-10-01", 
-        endDate: null,
-        status: "completed"
+        startDate: "2025-08-20", 
+        endDate: "2025-11-10",
+        status: "completed",
+        note: "Yavyaye yamubumbe mukw'umunani 2025"
       }
     ],
     vaccinations: [
@@ -245,8 +246,8 @@ const cows = [
   {
     id: 10,
     name: "Yamubumbe",
-    breed: "Salers",
-    dateOfBirth: "2025-2-30",
+    breed: "BD: Août 2025",
+    dateOfBirth: "2025-08-20",
     owner: "Papa",
     color: "Black, Brown & White",
     tagNumber: "Mubumbe inyana #1",
