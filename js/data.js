@@ -114,7 +114,7 @@ const cows = [
         pregnancyDate: "2026-1-10",
         estimatedDelivery: "2026-09-10",
         status: "active",
-        note:"yimye haheze amwzi ~3 yavyaye"
+        note:"yimye haheze amwzi ~3 yacukije"
       }
     ],
     vaccinations: [
@@ -229,7 +229,7 @@ const cows = [
     id: 9,
     name: "Yamwamakare",
     breed: "Salers",
-    dateOfBirth: "2023-12-30",
+    dateOfBirth: "2024-12-30",
     owner: "Papa",
     milkCapacity: "-",
     color: "Dark Brown & White",
