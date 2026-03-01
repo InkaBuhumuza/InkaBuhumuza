@@ -100,13 +100,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [
 
-      {
-        type: "pregnancy",
-        pregnancyDate: "2026-1-10",
-        estimatedDelivery: "2026-09-10",
-        status: "active",
-        note:"yimye haheze amwzi ~3 yavyaye"
-      },
+
 
       {
         type: "lactation",
@@ -114,6 +108,13 @@ const cows = [
         endDate: "2025-11-10",
         status: "completed",
         note: "Yavyaye yamubumbe mukw'umunani 2025"
+      },
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-1-10",
+        estimatedDelivery: "2026-09-10",
+        status: "active",
+        note:"yimye haheze amwzi ~3 yavyaye"
       }
     ],
     vaccinations: [
