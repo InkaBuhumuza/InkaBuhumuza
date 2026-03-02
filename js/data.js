@@ -2,7 +2,7 @@
 const cows = [
     {
     id: 1,
-    name: "Izina",
+    name: "Bigoro",
     breed: "Bought=24-02-2026",
     dateOfBirth: "-",
     owner: "Pilote",
