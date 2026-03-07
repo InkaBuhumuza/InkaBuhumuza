@@ -270,6 +270,20 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
+  },
+  {
+    id: 12,
+    name: "izina",
+    breed: "Bought: 7/03/2026",
+    dateOfBirth: "-",
+    owner: "Khalid",
+    milkCapacity: "-",
+    color: "-", //  to be determined
+    tagNumber: "-",
+    profilePicture: "./images/khalid.jpeg",
+    gallery: [],
+    reproductiveHistory: [],
+    vaccinations: []
   }
 ];
 
