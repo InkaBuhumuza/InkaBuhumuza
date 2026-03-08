@@ -307,7 +307,7 @@ const cows = [
     owner: "Gloria",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "Buhumuza, Majambere inyana",
+    tagNumber: "📌 Buhumuza, Majambere inyana",
     profilePicture: "./images/inyana_gl.jpeg",
     gallery: [],
     reproductiveHistory: [],
