@@ -8,7 +8,7 @@ const cows = [
     owner: "Pilote",
     milkCapacity: "10 L/day",
     color: "White & Brown", //  to be determined
-    tagNumber: "Bought 24-02-2026 ~ 3.5M",
+    tagNumber: "📌 Buhumuza, Bought 24-02-2026 ~ 3.5M",
     profilePicture: "./images/yanje.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -30,7 +30,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "10 L/day",
     color: "Black & brown",
-    tagNumber: "HF-001",
+    tagNumber: "📌 Buhumuza, HF-001",
     profilePicture: "./images/bikari.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -63,7 +63,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "10 L/day",
     color: "Dark Brown",
-    tagNumber: "JR-012",
+    tagNumber: "📌 Senyeri, JR-012",
     profilePicture: "./images/mwamakare.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -95,7 +95,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "10 L/day",
     color: "Dark Brown",
-    tagNumber: "GU-003",
+    tagNumber: "📌 Buhumuza, GU-003",
     profilePicture: "./images/yamaza_mubumbe.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -133,7 +133,7 @@ const cows = [
     owner: "Khalid",
     milkCapacity: "-",
     color: "Brown & White",
-    tagNumber: "BS-008",
+    tagNumber: "📌 Buhumuza, BS-008",
     profilePicture: "./images/ishuri.jpg",
     gallery: [],
     reproductiveHistory: [],
@@ -152,7 +152,7 @@ const cows = [
     owner: "Khalid",
     milkCapacity: "-",
     color: "Light Brown & White",
-    tagNumber: "HF-015",
+    tagNumber: "📌 Buhumuza, HF-015",
     profilePicture: "./images/yamaza_maman.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -180,7 +180,7 @@ const cows = [
     owner: "Maman",
     milkCapacity: "10 L/day",
     color: "Brown",
-    tagNumber: "HF-016",
+    tagNumber: "📌 Buhumuza, HF-016",
     profilePicture: "./images/mukunzi.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -214,7 +214,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "-",
     color: "Black",
-    tagNumber: "Bikari inyana #1",
+    tagNumber: "📌 Buhumuza, Bikari inyana #1",
     profilePicture: "./images/rwabikari2.jpeg",
     gallery: [],
     reproductiveHistory: [],
@@ -233,7 +233,7 @@ const cows = [
     owner: "Papa",
     milkCapacity: "-",
     color: "Dark Brown & White",
-    tagNumber: "Mwamakare inyana #1",
+    tagNumber: "📌 Buhumuza, Mwamakare inyana #1",
     profilePicture: "./images/yamwamakare.jpg",
     gallery: [],
     reproductiveHistory: [],
@@ -251,7 +251,7 @@ const cows = [
     dateOfBirth: "2025-08-20",
     owner: "Papa",
     color: "Black, Brown & White",
-    tagNumber: "Mubumbe inyana #1",
+    tagNumber: "📌 Buhumuza, Mubumbe inyana #1",
     profilePicture: "./images/yamubumbe.jpeg",
     gallery: ["./images/yamubumbe.jpeg"],
     reproductiveHistory: [],
@@ -265,7 +265,7 @@ const cows = [
     owner: "Maman",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "Mukunzi inyana #1",
+    tagNumber: "📌 Buhumuza, Mukunzi inyana #1",
     profilePicture: "",
     gallery: [],
     reproductiveHistory: [],
@@ -279,7 +279,7 @@ const cows = [
     owner: "Khalid",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "Bought: 7/03/2026 ~2.2M",
+    tagNumber: "📌 Senyeri, Bought: 7/03/2026 ~2.2M",
     profilePicture: "./images/khalid.jpeg",
     gallery: [],
     reproductiveHistory: [],
@@ -293,7 +293,7 @@ const cows = [
     owner: "Gloria",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "Buhumuza",
+    tagNumber: "📌 Buhumuza, Buhumuza",
     profilePicture: "./images/majambere_gl.jpeg",
     gallery: [],
     reproductiveHistory: [],
