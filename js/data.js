@@ -301,13 +301,13 @@ const cows = [
   },
   {
     id: 14,
-    name: "Majambere inyana",
+    name: "Keza",
     breed: "Frisonne",
     dateOfBirth: "-",
     owner: "Gloria",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "Buhumuza",
+    tagNumber: "Buhumuza, Majambere inyana",
     profilePicture: "./images/inyana_gl.jpeg",
     gallery: [],
     reproductiveHistory: [],
