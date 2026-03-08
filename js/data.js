@@ -284,6 +284,34 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
+  },
+  {
+    id: 13,
+    name: "Majambere",
+    breed: "Frisonne",
+    dateOfBirth: "-",
+    owner: "Gloria",
+    milkCapacity: "-",
+    color: "-", //  to be determined
+    tagNumber: "Buhumuza",
+    profilePicture: "./images/majambere_gl.jpeg",
+    gallery: [],
+    reproductiveHistory: [],
+    vaccinations: []
+  },
+  {
+    id: 14,
+    name: "Majambere inyana",
+    breed: "Frisonne",
+    dateOfBirth: "-",
+    owner: "Gloria",
+    milkCapacity: "-",
+    color: "-", //  to be determined
+    tagNumber: "Buhumuza",
+    profilePicture: "./images/inyana_gl.jpeg",
+    gallery: [],
+    reproductiveHistory: [],
+    vaccinations: []
   }
 ];
 
