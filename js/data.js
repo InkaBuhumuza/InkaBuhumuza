@@ -273,7 +273,7 @@ const cows = [
   },
   {
     id: 12,
-    name: "izina",
+    name: "Munyarwanda",
     breed: "Bought: 7/03/2026",
     dateOfBirth: "-",
     owner: "Khalid",
