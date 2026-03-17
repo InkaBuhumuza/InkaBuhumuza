@@ -50,7 +50,7 @@ const cows = [
       }
     ],
     vaccinations: [ 
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -122,7 +122,7 @@ const cows = [
       }
     ],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-05", vaccine: "Multivitamine + Bernir", administered: "Dr. Armel (No: 69121101)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -143,7 +143,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "ntiyattewe, vyaranse ko bayifata", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -170,7 +170,7 @@ const cows = [
       }
     ],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -207,7 +207,7 @@ const cows = [
       }
     ],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" }
@@ -227,7 +227,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -247,7 +247,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
-      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -312,7 +312,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
-    { date: "2026-03-15", vaccine: "Devenex", administered: "-" }
+    { date: "2026-03-14", vaccine: "Devenex", administered: "-" }
 
     ]
   }
