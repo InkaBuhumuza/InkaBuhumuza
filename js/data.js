@@ -143,7 +143,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
-      { date: "2026-03-14", vaccine: "ntiyattewe, vyaranse ko bayifata", administered: "-" }, 
+      { date: "2026-03-14", vaccine: "ntiyatewe, vyaranse ko bayifata", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
