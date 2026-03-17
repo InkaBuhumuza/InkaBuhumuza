@@ -8,7 +8,7 @@ const cows = [
     owner: "Pilote",
     milkCapacity: "10 L/day",
     color: "White & Brown", //  to be determined
-    tagNumber: "📌 Buhumuza, Bought 24-02-2026 ~ 3.5M",
+    tagNumber: "📌 Senyeri, Bought 24-02-2026 ~ 3.5M",
     profilePicture: "./images/yanje.jpg",
     gallery: [],
     reproductiveHistory: [
@@ -20,7 +20,9 @@ const cows = [
         note:"Ngo yoba yarimye imbere yuko tuyigura le 24-01-2026"
       }
     ],
-    vaccinations: []
+    vaccinations: [
+      { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" },
+    ]
   },
   {
     id: 2,
@@ -47,7 +49,8 @@ const cows = [
         status: "active"
       }
     ],
-    vaccinations: [      
+    vaccinations: [ 
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -82,7 +85,8 @@ const cows = [
       }
     ],
     vaccinations: [
-      { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
+      { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" },
+      { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Deo" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" }
     ]
@@ -118,6 +122,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-05", vaccine: "Multivitamine + Bernir", administered: "Dr. Armel (No: 69121101)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-06-28", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -138,6 +143,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -164,6 +170,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-01-04", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-04-17", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -200,6 +207,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" }
@@ -219,6 +227,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -238,6 +247,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -255,7 +265,9 @@ const cows = [
     profilePicture: "./images/yamubumbe.jpeg",
     gallery: ["./images/yamubumbe.jpeg"],
     reproductiveHistory: [],
-    vaccinations: []
+    vaccinations: [
+      { date: "2026-03-15", vaccine: "Devenex", administered: "-" }
+    ]
   },
   {
     id: 11,
@@ -283,7 +295,9 @@ const cows = [
     profilePicture: "./images/khalid.jpeg",
     gallery: [],
     reproductiveHistory: [],
-    vaccinations: []
+    vaccinations: [
+    { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" }
+    ]
   },
   {
     id: 13,
@@ -294,24 +308,13 @@ const cows = [
     milkCapacity: "-",
     color: "-", //  to be determined
     tagNumber: "📌 Buhumuza, Buhumuza",
-    profilePicture: "./images/majambere_gl.jpeg",
+    profilePicture: "",
     gallery: [],
     reproductiveHistory: [],
-    vaccinations: []
-  },
-  {
-    id: 14,
-    name: "Keza",
-    breed: "Frisonne",
-    dateOfBirth: "-",
-    owner: "Gloria",
-    milkCapacity: "-",
-    color: "-", //  to be determined
-    tagNumber: "📌 Buhumuza, Majambere inyana",
-    profilePicture: "./images/inyana_gl.jpeg",
-    gallery: [],
-    reproductiveHistory: [],
-    vaccinations: []
+    vaccinations: [
+    { date: "2026-03-15", vaccine: "Devenex", administered: "-" }
+
+    ]
   }
 ];
 
