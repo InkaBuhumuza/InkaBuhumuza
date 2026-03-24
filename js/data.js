@@ -21,7 +21,8 @@ const cows = [
       }
     ],
     vaccinations: [
-      { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" },
+      {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
+      { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" }
     ]
   },
   {
@@ -85,6 +86,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
       { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" },
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Deo" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -296,6 +298,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+    {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
     { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" }
     ]
   },
