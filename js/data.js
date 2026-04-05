@@ -293,7 +293,7 @@ const cows = [
     owner: "Khalid",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "📌 Senyeri, Bought: 7/03/2026 ~2.5M",
+    tagNumber: "📌 Senyeri, Bought: 7/03/2026 ~2.6M",
     profilePicture: "./images/khalid.jpeg",
     gallery: [],
     reproductiveHistory: [],
