@@ -309,7 +309,7 @@ const cows = [
     dateOfBirth: "-",
     owner: "Gloria",
     milkCapacity: "-",
-    color: "-", //  to be determined
+    color: "White and Black", //  to be determined
     tagNumber: "📌 Buhumuza, Buhumuza   ~6.5M",
     profilePicture: "",
     gallery: [],
@@ -317,8 +317,8 @@ const cows = [
 
       {
         type: "pregnancy",
-        pregnancyDate: "~",
-        estimatedDelivery: "2026-June", 
+        pregnancyDate: "2025-09-20",
+        estimatedDelivery: "2026-06-20", 
         status: "active",
         note: "Expected to give birth in around june",
       }
