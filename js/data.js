@@ -319,7 +319,7 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "~",
         estimatedDelivery: "2026-June", 
-        status: "complete",
+        status: "active",
         note: "Expected to give birth in around june",
       }
     ],
