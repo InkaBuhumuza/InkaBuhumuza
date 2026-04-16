@@ -310,10 +310,19 @@ const cows = [
     owner: "Gloria",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "📌 Buhumuza, Buhumuza",
+    tagNumber: "📌 Buhumuza, Buhumuza   ~6.5M",
     profilePicture: "",
     gallery: [],
-    reproductiveHistory: [],
+    reproductiveHistory: [
+
+      {
+        type: "pregnancy",
+        pregnancyDate: "~",
+        estimatedDelivery: "2026-June", 
+        status: "complete",
+        note: "Expected to give birth in around june",
+      }
+    ],
     vaccinations: [
     { date: "2026-03-14", vaccine: "Devenex", administered: "-" }
 
