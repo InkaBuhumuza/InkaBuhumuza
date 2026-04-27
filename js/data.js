@@ -82,8 +82,16 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2025-07-11",
         estimatedDelivery: "2026-04-11",
-        status: "active"
+        status: "completed"
+      },
+      {
+        type: "lactation",
+        startDate: "2026-04-27",
+        endDate: "-",
+        status: "active",
+        note: "yavyaye irengeranye idwizibiri namisi 2, yavyaye le 27/04/2026"
       }
+
     ],
     vaccinations: [
       {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
@@ -327,6 +335,20 @@ const cows = [
     { date: "2026-03-14", vaccine: "Devenex", administered: "-" }
 
     ]
+  },
+  {
+    id: 14,
+    name: "inyana ya mwamakare",
+    breed: "BD: 27 avril 2026",
+    dateOfBirth: "2026-04-27",
+    owner: "Papa",
+    milkCapacity: "-",
+    color: "-", //  to be determined
+    tagNumber: "📌 Senyeri, Mukunzi inyana #2",
+    profilePicture: "",
+    gallery: [],
+    reproductiveHistory: [],
+    vaccinations: []
   }
 ];
 
