@@ -87,7 +87,7 @@ const cows = [
       {
         type: "lactation",
         startDate: "2026-04-27",
-        endDate: "-",
+        endDate: null,
         status: "active",
         note: "yavyaye irengeranye idwizibiri namisi 2, yavyaye le 27/04/2026"
       }
