@@ -359,7 +359,7 @@ const cows = [
   },
   {
   id: 15,
-  name: "Keza",
+  name: "Rwamajambere",
   breed: "BD: 30 avril 2026",
   dateOfBirth: "2026-04-30",
   owner: "Gloria",
