@@ -365,7 +365,7 @@ const cows = [
   owner: "Gloria",
   milkCapacity: "-",
   color: "-", //  to be determined
-  tagNumber: "📌 Senyeri, Ishuri ya Majambere",
+  tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
   profilePicture: "",
   gallery: [],
   reproductiveHistory: [],
