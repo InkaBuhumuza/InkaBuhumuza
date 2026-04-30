@@ -329,6 +329,13 @@ const cows = [
         estimatedDelivery: "2026-06-20", 
         status: "complete",
         note: "Expected to give birth in around May",
+      },
+      {
+        type: "lactation",
+        startDate: "2026-04-30",
+        endDate: null,
+        status: "active",
+        note: "yavyaye le 30/04/2026 ivyara ishuri"
       }
     ],
     vaccinations: [
