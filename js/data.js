@@ -349,6 +349,20 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
+  },
+  {
+  id: 15,
+  name: "Keza",
+  breed: "BD: 30 avril 2026",
+  dateOfBirth: "2026-04-30",
+  owner: "Gloria",
+  milkCapacity: "-",
+  color: "-", //  to be determined
+  tagNumber: "📌 Senyeri, Ishuri ya Majambere",
+  profilePicture: "",
+  gallery: [],
+  reproductiveHistory: [],
+  vaccinations: []
   }
 ];
 
