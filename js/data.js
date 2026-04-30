@@ -327,8 +327,15 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2025-09-20",
         estimatedDelivery: "2026-06-20", 
+        status: "complete",
+        note: "Expected to give birth in around May",
+      },
+      {
+        type: "lactation",
+        startDate: "2026-04-30", 
+        endDate: null,
         status: "active",
-        note: "Expected to give birth in around june",
+        note: "Vêlée le 30/04/2026"
       }
     ],
     vaccinations: [
