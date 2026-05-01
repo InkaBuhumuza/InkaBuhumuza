@@ -364,7 +364,7 @@ const cows = [
   dateOfBirth: "2026-04-30",
   owner: "Gloria",
   milkCapacity: "-",
-  color: "-", //  to be determined
+  color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
   profilePicture: "./gallery/m1.jpg",
   gallery: ["./gallery/m1.jpg"],
