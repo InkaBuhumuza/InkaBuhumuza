@@ -366,8 +366,8 @@ const cows = [
   milkCapacity: "-",
   color: "-", //  to be determined
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
-  profilePicture: "",
-  gallery: [],
+  profilePicture: "./gallery/m1.jpg",
+  gallery: ["./gallery/m1.jpg"],
   reproductiveHistory: [],
   vaccinations: []
   }
@@ -432,5 +432,15 @@ const farmGallery = [
     id: 8,
     url: "./gallery/blessing_ninyana.jpg",
     comment: "Blessing arikumwe n'inyana, Senyeri Juillet 2025"
+  }, 
+  {
+    id: 9,
+    url: "./gallery/m3.jpg",
+    comment: "Inka ya Gloria rwamajambere yavutse le 30/04/2026- photo taken 1/05/2026"
+  },
+  {
+    id: 10,
+    url: "./gallery/m1.jpg",
+    comment: "Rwamajambere yavutse le 30/04/2026 - photo taken 1/05/2026"
   }
 ];
