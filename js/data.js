@@ -345,7 +345,7 @@ const cows = [
   },
   {
     id: 14,
-    name: "inyana ya mwamakare",
+    name: "Keza ya mwamakare",
     breed: "BD: 27 avril 2026",
     dateOfBirth: "2026-04-27",
     owner: "Papa",
