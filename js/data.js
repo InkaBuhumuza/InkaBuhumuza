@@ -352,7 +352,7 @@ const cows = [
     milkCapacity: "-",
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, Mukunzi inyana #2",
-    profilePicture: "",
+    profilePicture: "./images/yamwamakare1.jpg",
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
