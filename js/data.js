@@ -341,7 +341,7 @@ const cows = [
     milkCapacity: "-",
     color: "White and Black", //  to be determined
     tagNumber: "📌 Buhumuza, Buhumuza   ~6.5M",
-    profilePicture: "",
+    profilePicture: "./image/majambere.jpg",
     gallery: [],
     reproductiveHistory: [
 
