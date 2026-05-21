@@ -464,5 +464,10 @@ const farmGallery = [
     id: 10,
     url: "./gallery/m1.jpg",
     comment: "Rwamajambere yavutse le 30/04/2026 - photo taken 1/05/2026"
+  },
+  {
+    id: 11,
+    url: "./gallery/yamukunzi.jpg",
+    comment: "Rwamajambere na yamukunzi mukiraro - photo taken 219/05/2026"
   }
 ];
