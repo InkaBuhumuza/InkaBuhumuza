@@ -308,9 +308,9 @@ const cows = [
     dateOfBirth: "2026-02-17",
     owner: "Maman",
     milkCapacity: "-",
-    color: "-", //  to be determined
+    color: "Brown", //  to be determined
     tagNumber: "📌 Buhumuza, Mukunzi inyana #1",
-    profilePicture: "",
+    profilePicture: "./images/yamukunzi.jpg",
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
