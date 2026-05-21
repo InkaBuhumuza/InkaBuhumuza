@@ -388,7 +388,7 @@ const cows = [
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
-  profilePicture: "./gallery/yamajambere1.jpg",
+  profilePicture: "./images/yamajambere1.jpg",
   gallery: ["./gallery/m1.jpg"],
   reproductiveHistory: [],
   vaccinations: []
@@ -467,7 +467,7 @@ const farmGallery = [
   },
   {
     id: 11,
-    url: "./gallery/yamukunzi.jpg",
+    url: "./images/yamukunzi.jpg",
     comment: "Rwamajambere na yamukunzi mukiraro - photo taken 219/05/2026"
   }
 ];
