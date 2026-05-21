@@ -1,7 +1,29 @@
 // Sample data with reproductive history
 const cows = [
-    {
+        {
     id: 1,
+    name: "--",
+    breed: "Bought=22-05-2026",
+    dateOfBirth: "-",
+    owner: "Pilote",
+    milkCapacity: "15 L/day",
+    color: "Black & White", //  to be determined
+    tagNumber: "📌 Buhumuza, Bought 22-05-2026 ~ 3.5M",
+    profilePicture: "./images/yanje2.jpg",
+    gallery: [],
+    reproductiveHistory: [
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-03-17", // they estimate two mounths pregnancy upon bought
+        estimatedDelivery: "2026-12-17",
+        status: "active",
+        note:"Ngo yoba yarimye amezi 2 imbere yuko tuyigura"
+      }
+    ],
+    vaccinations: []
+  },
+    {
+    id: 2,
     name: "Bigoro",
     breed: "Bought=24-02-2026",
     dateOfBirth: "-",
@@ -26,7 +48,7 @@ const cows = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     name: "Bikari",
     breed: "17 avril 2026",
     dateOfBirth: "2020-03-15",
@@ -60,7 +82,7 @@ const cows = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     name: "Mwamakare",
     breed: "lact. 27 avril 2026",
     dateOfBirth: "2021-11-22",
@@ -102,7 +124,7 @@ const cows = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     name: "Yamaza Mubumbe",
     breed: "2026-09-10",
     dateOfBirth: "2021-05-08",
@@ -141,7 +163,7 @@ const cows = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     name: "Ishuri",
     breed: "Frisonne",
     dateOfBirth: "2023-07-14",
@@ -161,7 +183,7 @@ const cows = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     name: "Yamaza Maman",
     breed: "15 juillet 2026",
     dateOfBirth: "2023-05-30",
@@ -190,7 +212,7 @@ const cows = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     name: "Mukunzi",
     breed: "lact. 17-02-1016",
     dateOfBirth: "2022-05-30",
@@ -225,7 +247,7 @@ const cows = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     name: "Rwabikari",
     breed: "Salers",
     dateOfBirth: "2023-12-30",
@@ -245,7 +267,7 @@ const cows = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     name: "Yamwamakare",
     breed: "Salers",
     dateOfBirth: "2024-12-30",
@@ -265,7 +287,7 @@ const cows = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     name: "Yamubumbe",
     breed: "BD: Août 2025",
     dateOfBirth: "2025-08-20",
@@ -280,7 +302,7 @@ const cows = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     name: "Yamukunzi",
     breed: "BD: 17 février 2026",
     dateOfBirth: "2026-02-17",
@@ -294,7 +316,7 @@ const cows = [
     vaccinations: []
   },
   {
-    id: 12,
+    id: 13,
     name: "Munyarwanda",
     breed: "Bought: 7/03/2026",
     dateOfBirth: "-",
@@ -311,7 +333,7 @@ const cows = [
     ]
   },
   {
-    id: 13,
+    id: 14,
     name: "Majambere",
     breed: "Frisonne",
     dateOfBirth: "-",
@@ -344,7 +366,7 @@ const cows = [
     ]
   },
   {
-    id: 14,
+    id: 15,
     name: "Keza ya mwamakare",
     breed: "BD: 27 avril 2026",
     dateOfBirth: "2026-04-27",
@@ -358,7 +380,7 @@ const cows = [
     vaccinations: []
   },
   {
-  id: 15,
+  id: 16,
   name: "Rwamajambere",
   breed: "BD: 30 avril 2026",
   dateOfBirth: "2026-04-30",
