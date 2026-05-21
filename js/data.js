@@ -345,7 +345,7 @@ const cows = [
   {
     id: 14,
     name: "Majambere",
-    breed: "Frisonne",
+    breed: "Lact. 30-04-2026",
     dateOfBirth: "-",
     owner: "Gloria",
     milkCapacity: "-",
