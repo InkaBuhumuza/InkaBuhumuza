@@ -176,7 +176,12 @@ const cows = [
 {
     id: 1,
     url: "./images/ishuri.jpg",
-    comment: "Taken August 2025"
+    comment: "Taken August 2025, Isenyeri"
+  },
+    {
+    id: 2,
+    url: "./images/ishuri2.jpg",
+    comment: "Taken May 2026, Buhumuza"
   }],
     reproductiveHistory: [],
     vaccinations: [
@@ -394,7 +399,18 @@ const cows = [
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
   profilePicture: "./images/yamajambere1.jpg",
-  gallery: ["./gallery/m1.jpg"],
+  gallery: [
+          {
+    id: 1,
+    url:  "./gallery/m1.jpg",
+    comment: "Taken 1st of May 2026, Buhumuza"
+  },
+  {
+     id: 2,
+    url:  "./images/yamajambere1.jpg",
+    comment: "Taken 19th of May 2026, Buhumuza"
+  }
+  ],
   reproductiveHistory: [],
   vaccinations: []
   }
