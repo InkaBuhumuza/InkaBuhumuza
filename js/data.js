@@ -171,8 +171,8 @@ const cows = [
     milkCapacity: "-",
     color: "Brown & White",
     tagNumber: "📌 Buhumuza, BS-008",
-    profilePicture: "./images/ishuri.jpg",
-    gallery: [],
+    profilePicture: "./images/ishuri1.jpg",
+    gallery: ["./images/ishuri.jpg"],
     reproductiveHistory: [],
     vaccinations: [
       { date: "2026-03-14", vaccine: "ntiyatewe, vyaranse ko bayifata", administered: "-" }, 
