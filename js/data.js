@@ -310,7 +310,7 @@ const cows = [
     milkCapacity: "-",
     color: "Brown", //  to be determined
     tagNumber: "📌 Buhumuza, Mukunzi inyana #1",
-    profilePicture: "./images/yamukunzi.jpg",
+    profilePicture: "./images/yamukunzi1.jpg",
     gallery: [],
     reproductiveHistory: [],
     vaccinations: []
@@ -388,7 +388,7 @@ const cows = [
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
-  profilePicture: "./gallery/m1.jpg",
+  profilePicture: "./gallery/yamajambere1.jpg",
   gallery: ["./gallery/m1.jpg"],
   reproductiveHistory: [],
   vaccinations: []
