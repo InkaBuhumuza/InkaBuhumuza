@@ -172,7 +172,12 @@ const cows = [
     color: "Brown & White",
     tagNumber: "📌 Buhumuza, BS-008",
     profilePicture: "./images/ishuri2.jpg",
-    gallery: ["./images/ishuri.jpg"],
+    gallery: [
+{
+    id: 1,
+    url: "./images/ishuri.jpg",
+    comment: "Taken August 2025"
+  }],
     reproductiveHistory: [],
     vaccinations: [
       { date: "2026-03-14", vaccine: "ntiyatewe, vyaranse ko bayifata", administered: "-" }, 
