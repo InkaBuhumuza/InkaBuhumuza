@@ -39,7 +39,7 @@ const cows = [
         pregnancyDate: "2026-05-26",
         estimatedDelivery: "2027-02-26",
         status: "active",
-        note:"Ngo yoba yarimye imbere yuko tuyigura le 24-01-2026"
+        note:"Ngo yoba yarimye imbere yuko tuyigura le 24-01-2026, yasubiweko le 26-05-2026"
       }
     ],
     vaccinations: [
