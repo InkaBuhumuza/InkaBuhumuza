@@ -36,8 +36,8 @@ const cows = [
     reproductiveHistory: [
       {
         type: "pregnancy",
-        pregnancyDate: "2026-01-17",
-        estimatedDelivery: "2026-09-17",
+        pregnancyDate: "2026-05-26",
+        estimatedDelivery: "2027-02-26",
         status: "active",
         note:"Ngo yoba yarimye imbere yuko tuyigura le 24-01-2026"
       }
