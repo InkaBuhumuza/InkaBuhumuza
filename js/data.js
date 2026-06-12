@@ -14,10 +14,10 @@ const cows = [
     reproductiveHistory: [
       {
         type: "pregnancy",
-        pregnancyDate: "2026-03-17", // they estimate two mounths pregnancy upon bought
-        estimatedDelivery: "2026-12-17",
+        pregnancyDate: "2026-06-3", // yasubiweko
+        estimatedDelivery: "2027-03-03",
         status: "active",
-        note:"Ngo yoba yarimye amezi 2 imbere yuko tuyigura"
+        note:"Ngo yoba yarimye amezi 2 imbere yuko tuyigura| Yasubiweko le 3 June 2026"
       }
     ],
     vaccinations: []
@@ -396,7 +396,7 @@ const cows = [
   dateOfBirth: "2026-04-30",
   owner: "Gloria",
   milkCapacity: "-",
-  color: "White and Black", //  to be determined
+  color: "White and Black",
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
   profilePicture: "./images/yamajambere1.jpg",
   gallery: [
@@ -411,6 +411,20 @@ const cows = [
     comment: "Taken 19th of May 2026, Buhumuza"
   }
   ],
+  reproductiveHistory: [],
+  vaccinations: []
+  },
+  {
+  id: 17,
+  name:"Ishuri -Khalid",
+  breed: "BT: 27 May 2026",
+  dateOfBirth: "-",
+  owner: "Kalid",
+  milkCapacity: "-",
+  color: "White and Black", //  to be determined
+  tagNumber: "📌 Senyeri, BT ~3M",
+  profilePicture: "",
+  gallery: [],
   reproductiveHistory: [],
   vaccinations: []
   }
