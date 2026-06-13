@@ -416,14 +416,14 @@ const cows = [
   },
   {
   id: 17,
-  name:"Ishuri -Khalid",
+  name:"Rwabishaza",
   breed: "BT: 27 May 2026",
   dateOfBirth: "-",
   owner: "Kalid",
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Senyeri, BT ~3M",
-  profilePicture: "",
+  profilePicture: "./images/ishurikhalid.jpg",
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
