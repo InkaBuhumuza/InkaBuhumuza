@@ -419,7 +419,7 @@ const cows = [
   name:"Rwabishaza",
   breed: "BT: 27 May 2026",
   dateOfBirth: "-",
-  owner: "Kalid",
+  owner: "Khalid",
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Senyeri, BT ~3M",
