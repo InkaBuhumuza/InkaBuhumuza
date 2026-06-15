@@ -23,7 +23,7 @@ function calculateAge(dob) {
     return `${months} mois`;
   } else if (months === 0) {
     return `${years} ans`;
-  // } else {
+   }//else {
   //   return `${years} ans ${months} mois`;
   // }
 }
