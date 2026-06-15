@@ -23,9 +23,9 @@ function calculateAge(dob) {
     return `${months} mois`;
   } else if (months === 0) {
     return `${years} ans`;
-  } else {
-    return `${years} ans ${months} mois`;
-  }
+  // } else {
+  //   return `${years} ans ${months} mois`;
+  // }
 }
 
 function formatDate(dateString) {
