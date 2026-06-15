@@ -4,7 +4,7 @@ const cows = [
     id: 1,
     name: "--",
     breed: "Bought=22-05-2026",
-    dateOfBirth: "-",
+    dateOfBirth: "2023-03-15",
     owner: "Pilote",
     milkCapacity: "15 L/day",
     color: "Black & White", //  to be determined
@@ -26,7 +26,7 @@ const cows = [
     id: 2,
     name: "Bigoro",
     breed: "Bought=24-02-2026",
-    dateOfBirth: "-",
+    dateOfBirth: "2024-03-15",
     owner: "Pilote",
     milkCapacity: "10 L/day",
     color: "White & Brown", //  to be determined
