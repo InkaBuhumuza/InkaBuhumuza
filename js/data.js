@@ -377,13 +377,13 @@ const cows = [
   },
   {
     id: 15,
-    name: "Keza ya mwamakare",
+    name: "Keza",
     breed: "BD: 27 avril 2026",
     dateOfBirth: "2026-04-27",
     owner: "Papa",
     milkCapacity: "-",
     color: "-", //  to be determined
-    tagNumber: "📌 Senyeri, Mukunzi inyana #2",
+    tagNumber: "📌 Senyeri, mwamakare inyana #2",
     profilePicture: "./images/yamwamakare1.jpg",
     gallery: [],
     reproductiveHistory: [],
