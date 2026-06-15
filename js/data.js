@@ -227,7 +227,7 @@ const cows = [
     breed: "lact. 17-02-1016",
     dateOfBirth: "2022-05-30",
     owner: "Maman",
-    milkCapacity: "10 L/day",
+    milkCapacity: "5 L/day",
     color: "Brown",
     tagNumber: "📌 Buhumuza, HF-016",
     profilePicture: "./images/mukunzi.jpg",
@@ -348,7 +348,7 @@ const cows = [
     breed: "Lact. 30-04-2026",
     dateOfBirth: "-",
     owner: "Gloria",
-    milkCapacity: "-",
+    milkCapacity: "5 L/day",
     color: "White and Black", //  to be determined
     tagNumber: "📌 Buhumuza, Buhumuza   ~6.5M",
     profilePicture: "./images/majambere.jpg",
