@@ -3,12 +3,29 @@ function calculateAge(dob) {
   if (dob === "-" || !dob) return "-";
   const birthDate = new Date(dob);
   const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
+  
+  let years = today.getFullYear() - birthDate.getFullYear();
+  let months = today.getMonth() - birthDate.getMonth();
+  
+  // Adjust if birthday hasn't occurred this year yet
+  if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+    years--;
+    months += 12;
   }
-  return age;
+  
+  // Adjust months if day of month hasn't passed
+  if (today.getDate() < birthDate.getDate()) {
+    months--;
+  }
+  
+  // Return formatted string
+  if (years === 0) {
+    return `${months} mois`;
+  } else if (months === 0) {
+    return `${years} ans`;
+  } else {
+    return `${years} ans ${months} mois`;
+  }
 }
 
 function formatDate(dateString) {
