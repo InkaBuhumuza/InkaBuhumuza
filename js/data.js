@@ -436,7 +436,7 @@ const doctors = [
     id: 1,
     name: "Dr. Deo",
     phone: "65676155",
-    location: "Bujumbura",
+    location: "Mugero",
     comment: "Vétérinaire principal de la ferme Mugero"
   },
   {
