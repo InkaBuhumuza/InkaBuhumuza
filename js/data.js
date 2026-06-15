@@ -260,7 +260,7 @@ const cows = [
     id: 9,
     name: "Rwabikari",
     breed: "Salers",
-    dateOfBirth: "2023-12-30",
+    dateOfBirth: "2024-12-30",
     owner: "Papa",
     milkCapacity: "-",
     color: "Black",
