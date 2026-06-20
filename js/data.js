@@ -62,13 +62,19 @@ const cows = [
       {
         type: "lactation",
         startDate: "-",
-        endDate: "2025-06-28 ",
+        endDate: "2025-06-28",
         status: "completed"
       },
       {
         type: "pregnancy",
         pregnancyDate: "2025-07-17",
-        estimatedDelivery: "2026-04-17",
+        estimatedDelivery: "2026-06-19",
+        status: "completed"
+      },
+      {
+        type: "lactation",
+        startDate: "2026-06-19",
+        endDate: "",
         status: "active"
       }
     ],
@@ -424,6 +430,20 @@ const cows = [
   color: "White and Black", //  to be determined
   tagNumber: "📌 Senyeri, BT ~3M",
   profilePicture: "./images/ishurikhalid.jpg",
+  gallery: [],
+  reproductiveHistory: [],
+  vaccinations: []
+  },
+{
+  id: 18,
+  name:"bikari inyana #2",
+  breed: "BD: 19 June 2026",
+  dateOfBirth: "2026-06-19",
+  owner: "Papa",
+  milkCapacity: "-",
+  color: "White and Black", //  to be determined
+  tagNumber: "📌 Buhumuza, bikari inyana #2",
+  profilePicture: "",
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
