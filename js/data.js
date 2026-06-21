@@ -243,7 +243,7 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2025-05-14",
         estimatedDelivery: "2026-02-14", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
-        status: "complete",
+        status: "completed",
         note: "Delivered on 17/02/2026 — 4 days later than expected."
       },
       {
@@ -252,6 +252,13 @@ const cows = [
         endDate: null,
         status: "active",
         note: "Vêlée le 17/02/2026 — 4 jours apres que prévu."
+      },
+      {
+        type: "pregnancy",
+        startDate: "2026-06-21", 
+        endDate: null,
+        status: "active",
+        note: "yimye le 21-june, 124 jours apres igihe yavyariye"
       }
     ],
     vaccinations: [
