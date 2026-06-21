@@ -255,8 +255,8 @@ const cows = [
       },
       {
         type: "pregnancy",
-        startDate: "2026-06-21", 
-        endDate: "2027-03-21",
+        pregnancyDate: "2026-06-21",
+        estimatedDelivery: "2027-03-21",
         status: "active",
         note: "yimye le 21-june, 124 jours apres igihe yavyariye"
       }
