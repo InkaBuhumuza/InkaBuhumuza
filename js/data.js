@@ -214,6 +214,12 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2025-10-15",
         estimatedDelivery: "2026-07-15",
+        status: "completed"
+      },
+      {
+        type: "lactation",
+        startDate: "2026-07-21",
+        endDate: "",
         status: "active"
       }
     ],
@@ -450,6 +456,20 @@ const cows = [
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, bikari inyana #2",
+  profilePicture: "",
+  gallery: [],
+  reproductiveHistory: [],
+  vaccinations: []
+  },
+  {
+  id: 19,
+  name:"yamaza maman inyana #1",
+  breed: "BD: 21 July 2026",
+  dateOfBirth: "2026-07-21",
+  owner: "Khalid",
+  milkCapacity: "-",
+  color: "White and Black", //  to be determined
+  tagNumber: "📌 Buhumuza, yamaza maman inyana #1",
   profilePicture: "",
   gallery: [],
   reproductiveHistory: [],
