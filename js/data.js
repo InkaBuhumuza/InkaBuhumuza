@@ -20,7 +20,9 @@ const cows = [
         note:"Ngo yoba yarimye amezi 2 imbere yuko tuyigura| Yasubiweko le 3 June 2026"
       }
     ],
-    vaccinations: []
+    vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" }
+    ]
   },
     {
     id: 2,
@@ -79,6 +81,7 @@ const cows = [
       }
     ],
     vaccinations: [ 
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" }.
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -90,7 +93,7 @@ const cows = [
   {
     id: 4,
     name: "Mwamakare",
-    breed: "lact. 27 avril 2026",
+    breed: "lact. 27 avril 2026 - exp: 2027-05-05",
     dateOfBirth: "2021-11-22",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -118,6 +121,12 @@ const cows = [
         endDate: null,
         status: "active",
         note: "yavyaye irengeranye idwizibiri namisi 2, yavyaye le 27/04/2026"
+      },
+            {
+        type: "pregnancy",
+        pregnancyDate: "2026-08-05",
+        estimatedDelivery: "2027-05-05",
+        status: "active"
       }
 
     ],
@@ -132,7 +141,7 @@ const cows = [
   {
     id: 5,
     name: "Yamaza Mubumbe",
-    breed: "2026-09-10",
+    breed: "2026-10-10",
     dateOfBirth: "2021-05-08",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -154,7 +163,7 @@ const cows = [
       {
         type: "pregnancy",
         pregnancyDate: "2026-1-10",
-        estimatedDelivery: "2026-09-10",
+        estimatedDelivery: "2026-10-10",
         status: "active",
         note:"yimye haheze amwzi ~3 yacukije"
       }
@@ -191,6 +200,7 @@ const cows = [
   }],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
       { date: "2026-03-14", vaccine: "ntiyatewe, vyaranse ko bayifata", administered: "-" }, 
       { date: "2026-02-06", vaccine: "Bernir", administered: "Dr. Armel" },
       { date: "2025-03-15", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -268,6 +278,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-05-10", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-11-07", vaccine: "Intermectin Super", administered: "Dr. Deo (No: 65676155)" },
@@ -288,6 +299,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -308,6 +320,7 @@ const cows = [
     gallery: [],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
       { date: "2025-02-22", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
       { date: "2025-07-12", vaccine: "Devenex", administered: "Dr. Deo (No: 65676155)" },
@@ -327,6 +340,7 @@ const cows = [
     gallery: ["./images/yamubumbe.jpeg"],
     reproductiveHistory: [],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
       { date: "2026-03-15", vaccine: "Devenex", administered: "-" }
     ]
   },
@@ -390,6 +404,7 @@ const cows = [
       }
     ],
     vaccinations: [
+      { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
     { date: "2026-03-14", vaccine: "Devenex", administered: "-" }
 
     ]
