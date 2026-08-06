@@ -122,7 +122,7 @@ const cows = [
         status: "active",
         note: "yavyaye irengeranye idwizibiri namisi 2, yavyaye le 27/04/2026"
       },
-            {
+      {
         type: "pregnancy",
         pregnancyDate: "2026-08-05",
         estimatedDelivery: "2027-05-05",
