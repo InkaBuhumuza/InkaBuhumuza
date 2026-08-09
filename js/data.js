@@ -52,7 +52,7 @@ const cows = [
   {
     id: 3,
     name: "Bikari",
-    breed: "17 avril 2026",
+    breed: "lact:17 avril 2026, exp:2027-05-08",
     dateOfBirth: "2020-03-15",
     owner: "Papa",
     milkCapacity: "5 L/day",
