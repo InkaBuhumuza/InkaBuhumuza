@@ -78,6 +78,13 @@ const cows = [
         startDate: "2026-06-19",
         endDate: "",
         status: "active"
+      },
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-08-08",
+        estimatedDelivery: "2027-05-08",
+        status: "active",
+        note: "yimye apres 51 jours yavyaye, iraconsa"
       }
     ],
     vaccinations: [ 
