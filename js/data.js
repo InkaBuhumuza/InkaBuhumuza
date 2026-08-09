@@ -52,7 +52,7 @@ const cows = [
   {
     id: 3,
     name: "Bikari",
-    breed: "lact:17 avril 2026, exp:2027-05-08",
+    breed: "🤱& exp:2027-05-08",
     dateOfBirth: "2020-03-15",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -100,7 +100,7 @@ const cows = [
   {
     id: 4,
     name: "Mwamakare",
-    breed: "lact. 27 avril 2026 - exp: 2027-05-05",
+    breed: "🤱 & exp: 2027-05-05",
     dateOfBirth: "2021-11-22",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -253,7 +253,7 @@ const cows = [
   {
     id: 8,
     name: "Mukunzi",
-    breed: "lact. 17-02-1016",
+    breed: "🤱& exp. 2027-03-21",
     dateOfBirth: "2022-05-30",
     owner: "Maman",
     milkCapacity: "5 L/day",
