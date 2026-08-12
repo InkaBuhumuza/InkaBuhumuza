@@ -499,7 +499,7 @@ const cows = [
   }, 
   {
   id: 20,
-  name:"inyana ya tonny",
+  name:"Gisubizo",
   breed: "-",
   dateOfBirth: "-",
   owner: "Tonny & Mbonimpa",
