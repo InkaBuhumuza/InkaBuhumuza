@@ -496,6 +496,29 @@ const cows = [
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
+  }, 
+  {
+  id: 20,
+  name:"inyana ya tonny",
+  breed: "-",
+  dateOfBirth: "-",
+  owner: "Tonny & Mbonimpa",
+  milkCapacity: "-",
+  color: "Brown", //  to be determined
+  tagNumber: "📌 Senyeri, inyana ya tonny",
+  profilePicture: "",
+  gallery: [],
+  reproductiveHistory: [
+
+  {
+    type: "pregnancy",
+    pregnancyDate: "2026-08-12",
+    estimatedDelivery: "2027-05-12", 
+    status: "active",
+    note: "Expected to give birth in around May",
+  }
+  ],
+  vaccinations: []
   }
 ];
 
