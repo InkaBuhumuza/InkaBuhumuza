@@ -471,14 +471,14 @@ const cows = [
   },
 {
   id: 18,
-  name:"bikari inyana #2",
+  name:"Yabikari #2",
   breed: "BD: 19 June 2026",
   dateOfBirth: "2026-06-19",
   owner: "Papa",
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, bikari inyana #2",
-  profilePicture: "",
+  profilePicture: "./images/07_2026/bikari_inyana2.jpg",
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
