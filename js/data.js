@@ -10,7 +10,13 @@ const cows = [
     color: "Black & White", //  to be determined
     tagNumber: "📌 Buhumuza, Bought 22-05-2026 ~ 3.5M",
     profilePicture: "./images/yanje2.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yanje2.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "pregnancy",
@@ -34,7 +40,13 @@ const cows = [
     color: "White & Brown", //  to be determined
     tagNumber: "📌 Senyeri, Bought 24-02-2026 ~ 3.5M",
     profilePicture: "./images/yanje.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yanje.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "pregnancy",
@@ -59,7 +71,13 @@ const cows = [
     color: "Black & brown",
     tagNumber: "📌 Buhumuza, HF-001",
     profilePicture: "./images/bikari.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/bikari.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "lactation",
@@ -107,7 +125,13 @@ const cows = [
     color: "Dark Brown",
     tagNumber: "📌 Senyeri, JR-012",
     profilePicture: "./images/mwamakare.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/mwamakare.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "lactation",
@@ -155,7 +179,13 @@ const cows = [
     color: "Dark Brown",
     tagNumber: "📌 Buhumuza, GU-003",
     profilePicture: "./images/yamaza_mubumbe.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yamaza_mubumbe.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
 
 
@@ -225,7 +255,13 @@ const cows = [
     color: "Light Brown & White",
     tagNumber: "📌 Buhumuza, HF-015",
     profilePicture: "./images/yamaza_maman.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yamaza_maman.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "pregnancy",
@@ -260,7 +296,13 @@ const cows = [
     color: "Brown",
     tagNumber: "📌 Buhumuza, HF-016",
     profilePicture: "./images/mukunzi.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/mukunzi.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
       {
         type: "pregnancy",
@@ -303,7 +345,13 @@ const cows = [
     color: "Black",
     tagNumber: "📌 Buhumuza, Bikari inyana #1",
     profilePicture: "./images/rwabikari2.jpeg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/rwabikari2.jpeg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: [
       { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
@@ -324,7 +372,13 @@ const cows = [
     color: "Dark Brown & White",
     tagNumber: "📌 Buhumuza, Mwamakare inyana #1",
     profilePicture: "./images/yamwamakare.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yamwamakare.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: [
       { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
@@ -361,7 +415,13 @@ const cows = [
     color: "Brown", //  to be determined
     tagNumber: "📌 Buhumuza, Mukunzi inyana #1",
     profilePicture: "./images/yamukunzi1.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yamukunzi1.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: []
   },
@@ -375,7 +435,13 @@ const cows = [
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, Bought: 7/03/2026 ~2.6M",
     profilePicture: "./images/khalid.jpeg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/khalid.jpeg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: [
     {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
@@ -392,7 +458,13 @@ const cows = [
     color: "White and Black", //  to be determined
     tagNumber: "📌 Buhumuza, Buhumuza   ~6.5M",
     profilePicture: "./images/majambere.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/majambere.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [
 
       {
@@ -426,7 +498,13 @@ const cows = [
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, mwamakare inyana #2",
     profilePicture: "./images/yamwamakare1.jpg",
-    gallery: [],
+    gallery: [
+      {
+        id: 1,
+        url: "./images/yamwamakare1.jpg",
+        comment: "Profile picture"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: []
   },
@@ -465,7 +543,13 @@ const cows = [
   color: "White and Black", //  to be determined
   tagNumber: "📌 Senyeri, BT ~3M",
   profilePicture: "./images/ishurikhalid.jpg",
-  gallery: [],
+  gallery: [
+    {
+      id: 1,
+      url: "./images/ishurikhalid.jpg",
+      comment: "Profile picture"
+    }
+  ],
   reproductiveHistory: [],
   vaccinations: []
   },
@@ -479,7 +563,13 @@ const cows = [
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, bikari inyana #2",
   profilePicture: "./images/07_2026/bikari_inyana2.jpeg",
-  gallery: [],
+  gallery: [
+    {
+      id: 1,
+      url: "./images/07_2026/bikari_inyana2.jpeg",
+      comment: "Profile picture"
+    }
+  ],
   reproductiveHistory: [],
   vaccinations: []
   },
@@ -493,7 +583,13 @@ const cows = [
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, yamaza maman inyana #1",
   profilePicture: "./images/07_2026/khalid_ishuri.jpg",
-  gallery: [],
+  gallery: [
+    {
+      id: 1,
+      url: "./images/07_2026/khalid_ishuri.jpg",
+      comment: "Profile picture"
+    }
+  ],
   reproductiveHistory: [],
   vaccinations: []
   }, 
