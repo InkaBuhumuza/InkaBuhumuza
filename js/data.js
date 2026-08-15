@@ -485,14 +485,14 @@ const cows = [
   },
   {
   id: 19,
-  name:"yamaza maman inyana #1",
+  name:"Rwayamaza",
   breed: "BD: 21 July 2026",
   dateOfBirth: "2026-07-21",
   owner: "Khalid",
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, yamaza maman inyana #1",
-  profilePicture: "",
+  profilePicture: "./images/07_2026/khalid_ishuri.jpg",
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
