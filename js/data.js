@@ -478,7 +478,7 @@ const cows = [
   milkCapacity: "-",
   color: "White and Black", //  to be determined
   tagNumber: "📌 Buhumuza, bikari inyana #2",
-  profilePicture: "./images/07_2026/bikari_inyana2.jpg",
+  profilePicture: "./images/07_2026/bikari_inyana2.jpeg",
   gallery: [],
   reproductiveHistory: [],
   vaccinations: []
