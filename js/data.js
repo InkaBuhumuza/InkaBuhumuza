@@ -216,7 +216,7 @@ const cows = [
   },
   {
     id: 6,
-    name: "Ishuri",
+    name: "Rwajambo",
     breed: "Frisonne",
     dateOfBirth: "2023-07-14",
     owner: "Khalid",
@@ -247,7 +247,7 @@ const cows = [
   },
   {
     id: 7,
-    name: "Yamaza Maman",
+    name: "Muco",
     breed: "15 juillet 2026",
     dateOfBirth: "2023-05-30",
     owner: "Khalid",
@@ -518,7 +518,7 @@ const cows = [
   color: "White and Black",
   tagNumber: "📌 Buhumuza, Ishuri ya Majambere",
   profilePicture: "./images/yamajambere1.jpg",
-  gallery: [
+  git : [
           {
     id: 1,
     url:  "./gallery/m1.jpg",
@@ -535,7 +535,7 @@ const cows = [
   },
   {
   id: 17,
-  name:"Rwabishaza",
+  name:"Rwabigabo",
   breed: "BT: 27 May 2026",
   dateOfBirth: "-",
   owner: "Khalid",
@@ -575,13 +575,13 @@ const cows = [
   },
   {
   id: 19,
-  name:"Rwayamaza",
+  name:"Rwamuco",
   breed: "BD: 21 July 2026",
   dateOfBirth: "2026-07-21",
   owner: "Khalid",
   milkCapacity: "-",
   color: "White and Black", //  to be determined
-  tagNumber: "📌 Buhumuza, yamaza maman inyana #1",
+  tagNumber: "📌 Buhumuza, Muco inyana #1",
   profilePicture: "./images/07_2026/khalid_ishuri.jpg",
   gallery: [
     {
