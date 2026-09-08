@@ -428,7 +428,7 @@ const cows = [
   {
     id: 13,
     name: "Munyarwanda",
-    breed: "Bought: 7/03/2026",
+    breed: "2027-06-04",
     dateOfBirth: "-",
     owner: "Khalid",
     milkCapacity: "-",
@@ -442,7 +442,16 @@ const cows = [
         comment: "Profile picture"
       }
     ],
-    reproductiveHistory: [],
+    reproductiveHistory: [
+
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-09-04",
+        estimatedDelivery: "2027-06-04", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
+        status: "active",
+        note: "Expected to give birth in around June 2027"
+      }
+    ],
     vaccinations: [
     {date: "2026-03-18", vaccine:"Devenex",  administered: "Dr. Deo (No: 65676155)"},
     { date: "2026-03-09", vaccine: "Intermectin Ivermectin 1% injection", administered: "Dr. Deo (No: 65676155)" }
