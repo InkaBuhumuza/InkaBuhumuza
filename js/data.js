@@ -31,8 +31,8 @@ const cows = [
 
     {
         type: "pregnancy",
-        startDate: "2026-08-11",
-        endDate: "2027-05-11",
+        pregnancyDate: "2026-08-11",
+        estimatedDelivery: "2027-05-11",
         status: "active", 
         note: "Ngo twayiguze yarimye ~ ukwezi"
       }
