@@ -8,7 +8,7 @@ const cows = [
   owner: "Pilote",
   milkCapacity: "-",
   color: "Brown", //  to be determined
-  tagNumber: "📌 Buhumuza, BT: 11 September 2026",
+  tagNumber: "📌 Buhumuza, BT: 11 September 2026, ~2M Tsh",
   profilePicture: "./images/bihembe1.jpg",
   gallery: [
     {
