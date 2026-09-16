@@ -30,7 +30,7 @@ const cows = [
   reproductiveHistory: [
 
     {
-        type: "lactation",
+        type: "pregnancy",
         startDate: "2026-08-11",
         endDate: "2027-05-11",
         status: "active", 
