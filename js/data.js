@@ -27,7 +27,16 @@ const cows = [
       comment: "Muri Tanzania iyo yaguriwe le 11 September 2026"
     }
   ],
-  reproductiveHistory: [],
+  reproductiveHistory: [
+
+    {
+        type: "lactation",
+        startDate: "2026-08-11",
+        endDate: "2027-05-11",
+        status: "active", 
+        note: "Ngo twayiguze yarimye ~ ukwezi"
+      }
+  ],
   vaccinations: []
   },
         {
