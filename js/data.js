@@ -559,7 +559,7 @@ const cows = [
     milkCapacity: "-",
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, mwamakare inyana #2",
-    profilePicture: "./images/keza_2026_093.jpg",
+    profilePicture: "./images/keza2026_09.jpg",
     gallery: [
       {
         id: 1,
