@@ -568,12 +568,12 @@ const cows = [
       }, 
             {
         id: 2,
-        url: "./images/keza_2026_09.jpg",
+        url: "./images/keza2026_09.jpg",
         comment: "le 26 semptember 2026 isenyeri amezi 5 kuva yavuka"
       }, 
       {
         id: 3,
-        url: "./images/keza_2026_092.jpg",
+        url: "./images/keza2026_092.jpg",
         comment: "le 26 semptember 2026 isenyeri amezi 5 kuva yavuka"
       }
     ],
