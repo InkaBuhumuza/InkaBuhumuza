@@ -167,12 +167,16 @@ const cows = [
     milkCapacity: "5 L/day",
     color: "Dark Brown",
     tagNumber: "📌 Senyeri, JR-012",
-    profilePicture: "./images/mwamakare.jpg",
+    profilePicture: "./images/mwamakare2026_09.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/mwamakare.jpg",
         comment: "Profile picture"
+      },       {
+        id: 2,
+        url: "./images/mwamakare2026_09.jpg",
+        comment: "Mwamakare le 26 september 2026, amezi 5 yonsa + ~ amezi 2 yarimye"
       }
     ],
     reproductiveHistory: [
@@ -414,16 +418,12 @@ const cows = [
     milkCapacity: "-",
     color: "Dark Brown & White",
     tagNumber: "📌 Buhumuza, Mwamakare inyana #1",
-    profilePicture: "./images/mwamakare2026_09.jpg",
+    profilePicture: "./images/yamwamakare.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yamwamakare.jpg",
         comment: "Profile picture"
-      },       {
-        id: 2,
-        url: "./images/mwamakare2026_09.jpg",
-        comment: "Mwamakare le 26 september 2026, amezi 5 yonsa + ~ amezi 2 yarimye"
       }
     ],
     reproductiveHistory: [],
