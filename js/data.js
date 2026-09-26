@@ -72,18 +72,22 @@ const cows = [
     {
     id: 3,
     name: "Bigoro",
-    breed: "Bought=24-02-2026",
+    breed: "kuvyara: 2027-02-26",
     dateOfBirth: "2024-03-15",
     owner: "Pilote",
     milkCapacity: "5 L/day",
     color: "White & Brown", //  to be determined
     tagNumber: "📌 Senyeri, Bought 24-02-2026 ~ 3.5M",
-    profilePicture: "./images/yanje.jpg",
+    profilePicture: "./images/bigoro2026_09.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yanje.jpg",
-        comment: "Profile picture"
+        comment: "ijakugurwa le 24-02-2026"
+      },  {
+        id: 2,
+        url: "./images/bigoro2026_09.jpg",
+        comment: "Le 2026-09-26, isenyeri, ifise amezi 4 y'inyana yambere"
       }
     ],
     reproductiveHistory: [
@@ -410,12 +414,16 @@ const cows = [
     milkCapacity: "-",
     color: "Dark Brown & White",
     tagNumber: "📌 Buhumuza, Mwamakare inyana #1",
-    profilePicture: "./images/yamwamakare.jpg",
+    profilePicture: "./images/mwamakare2026_09.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yamwamakare.jpg",
         comment: "Profile picture"
+      },       {
+        id: 2,
+        url: "./images/mwamakare2026_09.jpg",
+        comment: "Mwamakare le 26 september 2026, amezi 5 yonsa + ~ amezi 2 yarimye"
       }
     ],
     reproductiveHistory: [],
@@ -467,19 +475,25 @@ const cows = [
   {
     id: 14,
     name: "Munyarwanda",
-    breed: "2027-06-04",
+    breed: "Kuvyara: 2027-06-04",
     dateOfBirth: "-",
     owner: "Khalid",
     milkCapacity: "-",
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, Bought: 7/03/2026 ~2.6M",
-    profilePicture: "./images/khalid.jpeg",
+    profilePicture: "./images/munyarwanda_2026_09.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/khalid.jpeg",
         comment: "Profile picture"
+      }, 
+            {
+        id: 2,
+        url: "./images/munyarwanda_2026_09.jpg",
+        comment: "le 26-09-2026, isenyeri, ifise, ifise amezi y'idwi 3, inyana yambere "
       }
+
     ],
     reproductiveHistory: [
 
@@ -545,12 +559,22 @@ const cows = [
     milkCapacity: "-",
     color: "-", //  to be determined
     tagNumber: "📌 Senyeri, mwamakare inyana #2",
-    profilePicture: "./images/yamwamakare1.jpg",
+    profilePicture: "./images/keza_2026_093.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yamwamakare1.jpg",
-        comment: "Profile picture"
+        comment: "imisi mike ivutse"
+      }, 
+            {
+        id: 2,
+        url: "./images/keza_2026_09.jpg",
+        comment: "le 26 semptember 2026 isenyeri amezi 5 kuva yavuka"
+      }, 
+      {
+        id: 3,
+        url: "./images/keza_2026_092.jpg",
+        comment: "le 26 semptember 2026 isenyeri amezi 5 kuva yavuka"
       }
     ],
     reproductiveHistory: [],
@@ -644,20 +668,20 @@ const cows = [
   {
   id: 21,
   name:"Gisubizo",
-  breed: "-",
+  breed: "kuvyara: 2027-06-04",
   dateOfBirth: "-",
   owner: "Tonny & Mbonimpa",
   milkCapacity: "-",
   color: "Brown", //  to be determined
   tagNumber: "📌 Senyeri, inyana ya tonny",
-  profilePicture: "",
+  profilePicture: "./images/gisubizo.jpg",
   gallery: [],
   reproductiveHistory: [
 
   {
     type: "pregnancy",
-    pregnancyDate: "2026-08-12",
-    estimatedDelivery: "2027-05-12", 
+    pregnancyDate: "2026-09-04",
+    estimatedDelivery: "2027-06-04", 
     status: "active",
     note: "Expected to give birth in around May",
   }
@@ -740,5 +764,10 @@ const farmGallery = [
     id: 11,
     url: "./images/yamukunzi.jpg",
     comment: "Rwamajambere na yamukunzi mukiraro - photo taken 19/05/2026"
+  }, 
+    {
+    id: 12,
+    url: "./gallery/senyeri_baturukije2026_09.jpg",
+    comment: "Le 26-09-2026 isenyeri, Mama, papa & Blessing baturukije"
   }
 ];
