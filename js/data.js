@@ -248,9 +248,17 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2026-1-10",
         estimatedDelivery: "2026-10-10",
+        status: "complete",
+        note:"yimye haheze amwzi ~3 yacukije, mukuvyara yarengeje imisi .... "
+      },
+      {
+        type: "lactation",
+        startDate: "2026-10-13", 
+        endDate: "-",
         status: "active",
-        note:"yimye haheze amwzi ~3 yacukije"
+        note: "-"
       }
+      
     ],
     vaccinations: [
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
@@ -687,7 +695,36 @@ const cows = [
   }
   ],
   vaccinations: []
+  },
+  {
+  id: 22,
+  name:"-",
+  breed: "BT: 20-10-2026 ~3M",
+  dateOfBirth: "-",
+  owner: "Pilote & Tonny",
+  milkCapacity: "-",
+  color: "Black & White", //  to be determined
+  tagNumber: "📌 Senyeri",
+  profilePicture: "",
+  gallery: [],
+  reproductiveHistory: [],
+  vaccinations: []
+  },
+{
+  id: 23,
+  name:"Inyana ya Mubumbe #2",
+  breed: "BD: 13 October 2026",
+  dateOfBirth: "2026-10-13",
+  owner: "Papa",
+  milkCapacity: "-",
+  color: "", //  to be determined
+  tagNumber: "📌 Buhumuza, Inyana ya Mubumbe #2",
+  profilePicture: "",
+  gallery: [  ],
+  reproductiveHistory: [],
+  vaccinations: []
   }
+
 ];
 
 // Initial doctors data
