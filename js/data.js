@@ -303,7 +303,7 @@ const cows = [
   {
     id: 8,
     name: "Muco",
-    breed: "15 juillet 2026",
+    breed: "Izovyara: 01-08-2027",
     dateOfBirth: "2023-05-30",
     owner: "Khalid",
     milkCapacity: "-",
@@ -329,7 +329,15 @@ const cows = [
         startDate: "2026-07-21",
         endDate: "",
         status: "active"
+      },
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-11-01",
+        estimatedDelivery: "2027-08-01",
+        status: "active",
+        note: "Yimye haheze amezi atatu yavyaye"
       }
+      
     ],
     vaccinations: [
       { date: "2026-03-14", vaccine: "Devenex", administered: "-" }, 
@@ -483,7 +491,7 @@ const cows = [
   {
     id: 14,
     name: "Munyarwanda",
-    breed: "Izovyara: 2027-06-04",
+    breed: "Izovyara: 2027-07-31",
     dateOfBirth: "-",
     owner: "Khalid",
     milkCapacity: "-",
@@ -507,10 +515,10 @@ const cows = [
 
       {
         type: "pregnancy",
-        pregnancyDate: "2026-09-04",
-        estimatedDelivery: "2027-06-04", // Derivered on 17/02/2026 3 weeks and 3days prior to expected date (possibly the day it got pregnant was wrong)
+        pregnancyDate: "2026-10-31",
+        estimatedDelivery: "2027-07-31", 
         status: "active",
-        note: "Expected to give birth in around June 2027"
+        note: "Expected to give birth in around july 2027"
       }
     ],
     vaccinations: [
