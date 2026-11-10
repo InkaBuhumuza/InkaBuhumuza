@@ -42,7 +42,7 @@ const cows = [
         {
     id: 2,
     name: "Kirezi",
-    breed: "Bought=22-05-2026",
+    breed: "Izovyara: 03/03/2027",
     dateOfBirth: "2023-03-15",
     owner: "Pilote",
     milkCapacity: "15 L/day",
@@ -72,7 +72,7 @@ const cows = [
     {
     id: 3,
     name: "Bigoro",
-    breed: "kuvyara: 2027-02-26",
+    breed: "Izovyara: 2027-02-26",
     dateOfBirth: "2024-03-15",
     owner: "Pilote",
     milkCapacity: "5 L/day",
@@ -107,7 +107,7 @@ const cows = [
   {
     id: 4,
     name: "Bikari",
-    breed: "🤱& exp:2027-05-08",
+    breed: "🤱& Izovyara:2027-05-08",
     dateOfBirth: "2020-03-15",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -161,7 +161,7 @@ const cows = [
   {
     id: 5,
     name: "Mwamakare",
-    breed: "🤱 & exp: 2027-05-05",
+    breed: "🤱 & Izovyara: 2027-05-05",
     dateOfBirth: "2021-11-22",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -219,7 +219,7 @@ const cows = [
   {
     id: 6,
     name: "Yamaza Mubumbe",
-    breed: "2026-10-10",
+    breed: "Yavyaye: 2026-10-18",
     dateOfBirth: "2021-05-08",
     owner: "Papa",
     milkCapacity: "5 L/day",
@@ -248,12 +248,12 @@ const cows = [
         type: "pregnancy",
         pregnancyDate: "2026-1-10",
         estimatedDelivery: "2026-10-10",
-        status: "complete",
-        note:"yimye haheze amwzi ~3 yacukije, mukuvyara yarengeje imisi .... "
+        status: "completed",
+        note:"yimye haheze amwzi ~3 yacukije, mukuvyara yarengeje imisi 8 "
       },
       {
         type: "lactation",
-        startDate: "2026-10-13", 
+        startDate: "2026-10-18", 
         endDate: "-",
         status: "active",
         note: "-"
@@ -344,7 +344,7 @@ const cows = [
   {
     id: 9,
     name: "Mukunzi",
-    breed: "🤱& exp. 2027-03-21",
+    breed: "🤱& Izovyara. 2027-03-21",
     dateOfBirth: "2022-05-30",
     owner: "Maman",
     milkCapacity: "5 L/day",
@@ -483,7 +483,7 @@ const cows = [
   {
     id: 14,
     name: "Munyarwanda",
-    breed: "Kuvyara: 2027-06-04",
+    breed: "Izovyara: 2027-06-04",
     dateOfBirth: "-",
     owner: "Khalid",
     milkCapacity: "-",
@@ -521,7 +521,7 @@ const cows = [
   {
     id: 15,
     name: "Majambere",
-    breed: "Lact. 30-04-2026",
+    breed: "🤱 & Izovyara: 28/07/2027",
     dateOfBirth: "-",
     owner: "Gloria",
     milkCapacity: "5 L/day",
@@ -542,7 +542,7 @@ const cows = [
         pregnancyDate: "2025-09-20",
         estimatedDelivery: "2026-06-20", 
         status: "complete",
-        note: "Expected to give birth in around May",
+        note: "yaguzwe ifise amezi ica iraravyara haheze amezi 2",
       },
       {
         type: "lactation",
@@ -550,6 +550,13 @@ const cows = [
         endDate: null,
         status: "active",
         note: "yavyaye le 30/04/2026 ivyara ishuri"
+      },
+      {
+        type: "pregnancy",
+        pregnancyDate: "2026-10-28",
+        estimatedDelivery: "2027-07-28", 
+        status: "active",
+        note: "yimye haheze amezi 6 yavyaye",
       }
     ],
     vaccinations: [
@@ -676,7 +683,7 @@ const cows = [
   {
   id: 21,
   name:"Gisubizo",
-  breed: "kuvyara: 2027-06-04",
+  breed: "Izovyara: 2027-06-04",
   dateOfBirth: "-",
   owner: "Tonny & Mbonimpa",
   milkCapacity: "-",
@@ -699,22 +706,32 @@ const cows = [
   {
   id: 22,
   name:"-",
-  breed: "BT: 20-10-2026 ~3M",
+  breed: "Izovyara: 03/08/2027",
   dateOfBirth: "-",
   owner: "Pilote & Tonny",
   milkCapacity: "-",
   color: "Black & White", //  to be determined
-  tagNumber: "📌 Senyeri",
-  profilePicture: "",
+  tagNumber: "📌 Senyeri, yaguzwe: 20-10-2026 ~3M",
+  profilePicture: "./images/inka_new.jpg",
   gallery: [],
-  reproductiveHistory: [],
+  reproductiveHistory: [
+
+  {
+    type: "pregnancy",
+    pregnancyDate: "2026-11-03",
+    estimatedDelivery: "2027-08-03", 
+    status: "active",
+    note: "yimwe haciye indwi zibiri tuyiguze",
+  }
+
+  ],
   vaccinations: []
   },
 {
   id: 23,
   name:"Inyana ya Mubumbe #2",
-  breed: "BD: 13 October 2026",
-  dateOfBirth: "2026-10-13",
+  breed: "BD: 18 October 2026",
+  dateOfBirth: "2026-10-18",
   owner: "Papa",
   milkCapacity: "-",
   color: "", //  to be determined
