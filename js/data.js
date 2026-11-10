@@ -303,7 +303,7 @@ const cows = [
   {
     id: 8,
     name: "Muco",
-    breed: "Izovyara: 01-08-2027",
+    breed: "🤱 & Izovyara: 01-08-2027",
     dateOfBirth: "2023-05-30",
     owner: "Khalid",
     milkCapacity: "-",
