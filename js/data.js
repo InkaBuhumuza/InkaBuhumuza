@@ -48,7 +48,7 @@ const cows = [
     milkCapacity: "15 L/day",
     color: "Black & White", //  to be determined
     tagNumber: "📌 Buhumuza, Bought 22-05-2026 ~ 3.5M",
-    profilePicture: "./images/07_2026/kirezi.jpeg",
+    profilePicture: "./images/07_2026/kirezi2.jpeg",
     gallery: [
       {
         id: 1,
@@ -59,6 +59,11 @@ const cows = [
         id: 2,
         url: "./images/07_2026/kirezi.jpeg",
         comment: "yafashwe na gloria muma August 2026"
+      }, 
+      {
+        id: 3,
+        url: "./images/07_2026/kirezi2.jpeg",
+        comment: "september 2026"
       }
     ],
     reproductiveHistory: [
@@ -177,7 +182,7 @@ const cows = [
     milkCapacity: "5 L/day",
     color: "Dark Brown",
     tagNumber: "📌 Senyeri, JR-012",
-    profilePicture: "./images/mwamakare2026_09.jpg",
+    profilePicture: "./images/07_2026/mwamakare.jpg",
     gallery: [
       {
         id: 1,
@@ -187,6 +192,11 @@ const cows = [
         id: 2,
         url: "./images/mwamakare2026_09.jpg",
         comment: "Mwamakare le 26 september 2026, amezi 5 yonsa + ~ amezi 2 yarimye"
+      }, 
+      {
+        id: 3,
+        url: "./images/07_2026/mwamakare.jpg",
+        comment: "yafashwe August 2026, senyeri"
       }
     ],
     reproductiveHistory: [
@@ -444,12 +454,20 @@ const cows = [
     milkCapacity: "-",
     color: "Dark Brown & White",
     tagNumber: "📌 Buhumuza, Mwamakare inyana #1",
-    profilePicture: "./images/yamwamakare.jpg",
+    profilePicture: "./images/07_2026/yamwamakare.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yamwamakare.jpg",
         comment: "Profile picture"
+      }, 
+      {id: 2,
+        url: "./images/07_2026/yamwamakare_07.jpg",
+        comment: "July 2026, Buhumuza"
+      },
+      {id: 3,
+        url: "./images/07_2026/yamwamakare.jpg",
+        comment: "September 2026, Buhumuza"
       }
     ],
     reproductiveHistory: [],
@@ -470,8 +488,20 @@ const cows = [
     owner: "Papa",
     color: "Black, Brown & White",
     tagNumber: "📌 Buhumuza, Mubumbe inyana #1",
-    profilePicture: "./images/yamubumbe.jpeg",
-    gallery: ["./images/yamubumbe.jpeg"],
+    profilePicture: "./images/07_2026/yamubumbe.jpg",
+    gallery: [
+      
+      {
+        id: 1,
+        url: "./images/yamubumbe.jpeg",
+        comment: "February 2026, Buhumuza"
+      }, 
+      {
+        id: 2,
+        url: "./images/07_2026/yamubumbe.jpg",
+        comment: "July 2026, Buhumuza"
+      }
+    ],
     reproductiveHistory: [],
     vaccinations: [
       { date: "2026-07-15", vaccine: "Devenex", administered: "-" },
@@ -512,7 +542,7 @@ const cows = [
       {
         id: 1,
         url: "./images/khalid.jpeg",
-        comment: "Profile picture"
+        comment: "Photo umusi bayigura le 7-03-2026"
       }, 
             {
         id: 2,
@@ -747,15 +777,21 @@ const cows = [
   },
 {
   id: 23,
-  name:"Inyana ya Mubumbe #2",
+  name:"Rwamubumbe",
   breed: "BD: 18 October 2026",
   dateOfBirth: "2026-10-18",
   owner: "Papa",
   milkCapacity: "-",
   color: "", //  to be determined
   tagNumber: "📌 Buhumuza, Inyana ya Mubumbe #2",
-  profilePicture: "",
-  gallery: [  ],
+  profilePicture: "./images/07_2026/rwamubumbe.jpg",
+  gallery: [
+    {
+      id: 1,
+      url: "./images/07_2026/rwamubumbe.jpg",
+      comment: "Ikivuka le 18 October 2026, Buhumuza"
+    }
+   ],
   reproductiveHistory: [],
   vaccinations: []
   }
@@ -841,5 +877,31 @@ const farmGallery = [
     id: 12,
     url: "./gallery/senyeri_baturukije2026_09.jpg",
     comment: "Le 26-09-2026 isenyeri, Mama, papa & Blessing baturukije"
-  }
+    }, 
+    {
+    id: 13,
+    url: "./images/07_2026/IMG-20260926-WA0011.jpg"
+    }, 
+    {
+      id: 14,
+    url: "./images/07_2026/IMG-20260926-WA0012.jpg"
+    }, 
+    {
+      id: 15,
+    url: "./images/07_2026/IMG-20260926-WA0013.jpg"
+    }, 
+    {
+      id: 16,
+    url: "./images/07_2026/IMG-20260926-WA0015.jpg"
+    }, 
+    {
+      id: 17,
+    url: "./images/07_2026/IMG-20260926-WA0016.jpg"
+    }, 
+    {
+      id: 18,
+    url: "./images/07_2026/IMG-20260926-WA0017.jpg", 
+    comment: "Keza"
+    }
+
 ];
