@@ -784,11 +784,11 @@ const cows = [
   milkCapacity: "-",
   color: "", //  to be determined
   tagNumber: "📌 Buhumuza, Inyana ya Mubumbe #2",
-  profilePicture: "./images/07_2026/rwamubumbe.jpg",
+  profilePicture: "./images/07_2026/Rwamubumbe.jpg",
   gallery: [
     {
       id: 1,
-      url: "./images/07_2026/rwamubumbe.jpg",
+      url: "./images/07_2026/Rwamubumbe.jpg",
       comment: "Ikivuka le 18 October 2026, Buhumuza"
     }
    ],
