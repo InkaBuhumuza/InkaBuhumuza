@@ -48,12 +48,17 @@ const cows = [
     milkCapacity: "15 L/day",
     color: "Black & White", //  to be determined
     tagNumber: "📌 Buhumuza, Bought 22-05-2026 ~ 3.5M",
-    profilePicture: "./images/yanje2.jpg",
+    profilePicture: "./images/07_2026/kirezi.jpeg",
     gallery: [
       {
         id: 1,
         url: "./images/yanje2.jpg",
         comment: "Profile picture"
+      }, 
+      {
+        id: 2,
+        url: "./images/07_2026/kirezi.jpeg",
+        comment: "yafashwe na gloria muma August 2026"
       }
     ],
     reproductiveHistory: [
@@ -78,7 +83,7 @@ const cows = [
     milkCapacity: "5 L/day",
     color: "White & Brown", //  to be determined
     tagNumber: "📌 Senyeri, Bought 24-02-2026 ~ 3.5M",
-    profilePicture: "./images/bigoro2026_09.jpg",
+    profilePicture: "./images/07_2026/bigoro.jpg",
     gallery: [
       {
         id: 1,
@@ -88,6 +93,11 @@ const cows = [
         id: 2,
         url: "./images/bigoro2026_09.jpg",
         comment: "Le 2026-09-26, isenyeri, ifise amezi 4 y'inyana yambere"
+      }, 
+      {
+        id: 3,
+        url: "./images/07_2026/bigoro.jpg",
+        comment: "yafashwe september 2026, isenyeri, ifise amezi 4 y'inyana yambere"
       }
     ],
     reproductiveHistory: [
