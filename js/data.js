@@ -517,12 +517,16 @@ const cows = [
     milkCapacity: "-",
     color: "Brown", //  to be determined
     tagNumber: "📌 Buhumuza, Mukunzi inyana #1",
-    profilePicture: "./images/yamukunzi1.jpg",
+    profilePicture: "./images/07_2026/yamukunzi.jpg",
     gallery: [
       {
         id: 1,
         url: "./images/yamukunzi1.jpg",
         comment: "Profile picture"
+      }, 
+      {id:2, 
+        url: "./images/07_2026/yamukunzi.jpg",  
+      comment: "November 2026, Buhumuza. Ihajeje kukurwa amahembe"
       }
     ],
     reproductiveHistory: [],
