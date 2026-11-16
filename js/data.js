@@ -498,7 +498,7 @@ const cows = [
       }, 
       {
         id: 2,
-        url: "./images/07_2026/yamubumbe.jpg",
+        url: "./images/07_2026/yamubumbe.jpeg",
         comment: "July 2026, Buhumuza"
       }
     ],
