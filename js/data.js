@@ -488,7 +488,7 @@ const cows = [
     owner: "Papa",
     color: "Black, Brown & White",
     tagNumber: "📌 Buhumuza, Mubumbe inyana #1",
-    profilePicture: "./images/07_2026/yamubumbe.jpg",
+    profilePicture: "./images/07_2026/yamubumbe.jpeg",
     gallery: [
       
       {
